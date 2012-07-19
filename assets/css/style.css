@@ -1,0 +1,17 @@
+/*
+Custom stylesheet
+*/
+
+/* Import bootstrap stylesheet */
+
+@import url(bootstrap.css);
+
+/* Custom styles */
+
+.row{
+	padding: 20px 0;
+}
+
+.thumbnails a:hover {
+	border-color: #ddd;
+}
