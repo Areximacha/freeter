@@ -14,7 +14,9 @@
 @grayDarker:            #222;
 @grayDark:              #333;
 @gray:                  #555;
+@grayMid:				#666;
 @grayLight:             #999;
+@grayShadow:			#ddd;
 @grayLighter:           #eee;
 @white:                 #fff;
 
@@ -145,22 +147,22 @@
 
 // Navbar
 // -------------------------
-@navbarHeight:                    40px;
+@navbarHeight:                    60px;
 @navbarBackground:                @grayDarker;
 @navbarBackgroundHighlight:       @grayDark;
 
-@navbarText:                      @grayLight;
-@navbarLinkColor:                 @grayLight;
-@navbarLinkColorHover:            @white;
+@navbarText:                      @white;
+@navbarLinkColor:                 @white;
+@navbarLinkColorHover:            @grayLight;
 @navbarLinkColorActive:           @navbarLinkColorHover;
-@navbarLinkBackgroundHover:       transparent;
-@navbarLinkBackgroundActive:      @navbarBackground;
+@navbarLinkBackgroundHover:       @grayMid;
+@navbarLinkBackgroundActive:      @grayMid;
 
 @navbarSearchBackground:          lighten(@navbarBackground, 25%);
 @navbarSearchBackgroundFocus:     @white;
 @navbarSearchBorder:              darken(@navbarSearchBackground, 30%);
 @navbarSearchPlaceholderColor:    #ccc;
-@navbarBrandColor:                @navbarLinkColor;
+@navbarBrandColor:                @white;
 
 
 // Hero unit
