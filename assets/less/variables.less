@@ -14,9 +14,7 @@
 @grayDarker:            #222;
 @grayDark:              #333;
 @gray:                  #555;
-@grayMid:				#666;
 @grayLight:             #999;
-@grayShadow:			#ddd;
 @grayLighter:           #eee;
 @white:                 #fff;
 
@@ -55,8 +53,6 @@
 @baseFontFamily:        @sansFontFamily;
 @baseLineHeight:        18px;
 @altFontFamily:         @serifFontFamily;
-
-@logoFontFamily:		armorPiercing;
 
 @headingsFontFamily:    inherit; // empty to use BS default, @baseFontFamily
 @headingsFontWeight:    bold;    // instead of browser default, bold
@@ -149,22 +145,22 @@
 
 // Navbar
 // -------------------------
-@navbarHeight:                    60px;
+@navbarHeight:                    40px;
 @navbarBackground:                @grayDarker;
 @navbarBackgroundHighlight:       @grayDark;
 
-@navbarText:                      @white;
-@navbarLinkColor:                 @white;
-@navbarLinkColorHover:            @grayLight;
+@navbarText:                      @grayLight;
+@navbarLinkColor:                 @grayLight;
+@navbarLinkColorHover:            @white;
 @navbarLinkColorActive:           @navbarLinkColorHover;
-@navbarLinkBackgroundHover:       @grayMid;
-@navbarLinkBackgroundActive:      @grayMid;
+@navbarLinkBackgroundHover:       transparent;
+@navbarLinkBackgroundActive:      @navbarBackground;
 
 @navbarSearchBackground:          lighten(@navbarBackground, 25%);
 @navbarSearchBackgroundFocus:     @white;
 @navbarSearchBorder:              darken(@navbarSearchBackground, 30%);
 @navbarSearchPlaceholderColor:    #ccc;
-@navbarBrandColor:                @white;
+@navbarBrandColor:                @navbarLinkColor;
 
 
 // Hero unit
