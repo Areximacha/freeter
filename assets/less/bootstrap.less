@@ -66,16 +66,31 @@
 .navbar .brand {
 	padding: 5px 0 0 20px;
 }
-.navbar .nav-collapse .nav {
+#filternav {
 	width: 400px; 
 	float:none; 
 	margin-left: auto; 
-	margin-right: auto
+	margin-right: auto;
+	li{
+		background-color: @navbarLinkBackgroundActive;
+	}
 }
 
 .navbar .nav > li {
     width: 100%; 
 	text-align: center;
+}
+
+.navbar{
+	.navbar-link{
+		font-weight: normal;
+		text-decoration: none;
+	}
+}
+
+.dropdown-form{
+	padding:15px;
+	padding-bottom: 0;
 }
 
 #filter {
