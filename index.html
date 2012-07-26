@@ -24,6 +24,20 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+	
+	<!-- Custom scripts -->
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+
+			$("#filterButton").click(function(){
+				$("#filter").slideToggle("slow");
+				 return false;
+			});
+			
+			 
+		});
+	</script>
 
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="assets/ico/icon.ico">
@@ -62,13 +76,16 @@
 			</ul>
 			
 			<ul class="nav" id="filternav">
-				  <li><a href="#filter" id="filter"><img src="assets/img/glyphicons_filter.png" alt="filter"/> Filter</a></li>
+				  <li><a href="#" id="filterButton"><img src="assets/img/glyphicons_filter.png" alt="filter"/> Filter</a></li>
 			</ul>
 						
           </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
+	<div id="filter">
+		<p>content</p>
+	</div>
 
     <div class="container">
 
