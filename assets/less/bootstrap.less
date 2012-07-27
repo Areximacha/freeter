@@ -63,6 +63,10 @@
 
 // Custom CSS
 
+a:focus {
+			outline: none;
+		}
+
 .navbar .brand {
 	padding: 5px 0 0 20px;
 }
@@ -94,14 +98,29 @@
 }
 
 #filterButton {
+	background: url(../img/glyphicons_filter.png) no-repeat;
+	background-position: 38% 50%;
 	vertical-align: middle;
 	font-size: 24px;
 	font-weight: bold;
 	text-shadow: 1px 1px 1px @black;
 }
 
+#filterButton.active {
+	background: url(../img/glyphicons_filter_on.png) no-repeat;
+	background-position: 38% 50%;
+}
+
 #filter {
-	background: yellow;
+	background: @grayDark;
 	height: 100px;
 	display: none;
+	color: @white;
+	-moz-box-shadow:    inset 0 0 5px #000000;
+	-webkit-box-shadow: inset 0 0 5px #000000;
+	box-shadow:         inset 0 0 5px #000000;
+}
+
+#main {
+	margin-top: 18px;
 }
