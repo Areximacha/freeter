@@ -63,13 +63,16 @@
 
 // Custom CSS
 
-a:focus {
-			outline: none;
-		}
+@footerHeight: @navbarHeight - 10;
 
+a:focus {
+	outline: none;
+}
+		
 .navbar .brand {
 	padding: 5px 0 0 20px;
 }
+
 #filternav {
 	width: 400px; 
 	float:none; 
@@ -121,15 +124,43 @@ a:focus {
 	box-shadow:         inset 0 0 5px #000000;
 }
 
-#main {
-	margin-top: 18px;
-}
+// #main {
+//	margin-top: 18px;
+// }
 
 .row div {
 	overflow: hidden;
 	background: @grayLighter;
 	margin-bottom: 20px;
 }
+
+footer {
+	#gradient > .vertical(@navbarBackgroundHighlight, @navbarBackground);
+	position:fixed; 
+	bottom:0;
+	z-index: @zindexFixedNavbar;
+	min-height: @footerHeight;
+	color: @white;
+	
+	p {
+		margin-bottom: 0;
+		margin-left: 10px;
+		margin-right: 10px;
+		line-height: @footerHeight;
+	}
+	
+	a {
+		color: @navbarLinkColor;
+		&:hover {
+		  color: @navbarLinkColorHover;
+		  text-decoration: none;
+		}
+
+	}
+	
+}
+
+	/***** Responsive Styles *****/
 
 @media (min-width: 768px) and (max-width: 979px) {
 
