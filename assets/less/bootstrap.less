@@ -162,6 +162,14 @@ footer {
 
 	/***** Responsive Styles *****/
 
+@media (max-width: 767px) {
+	.profile {
+		img {
+			display: none;
+		}
+	}
+}
+	
 @media (min-width: 768px) and (max-width: 979px) {
 
 	.rowSpan1 {
@@ -172,6 +180,31 @@ footer {
 		height: 352px;
 	}
 	
+	.profile {
+		.rowSpan1;
+		.details {
+			margin: 5px 5px 0 5px;
+		}
+	}
+	
+	.wide {
+		.rowSpan1;
+		img {
+			float: right;
+			margin: 5px;
+			max-width:156px;
+			max-height:156px;
+		}
+	}
+	
+	.long {
+		.rowSpan2;
+		img {
+			margin: 5px;
+			max-width:156px;
+			max-height:156px;
+		}
+	}
 }
 
 @media (min-width: 980px) and (max-width: 1199px) {
@@ -181,6 +214,32 @@ footer {
 
 	.rowSpan2 {
 		height: 460px;
+	}
+	
+	.profile {
+		.rowSpan1;
+		.details {
+			margin: 10px 10px 0 10px;
+		}
+	}
+	
+	.wide {
+		.rowSpan1;
+		img {
+			float: right;
+			margin: 10px;
+			max-width:200px;
+			max-height:200px;
+		}
+	}
+	
+	.long {
+		.rowSpan2;
+		img {
+			margin: 10px;
+			max-width:200px;
+			max-height:200px;
+		}
 	}
 }
 
@@ -196,6 +255,32 @@ footer {
 	
 	.row div {
 	margin-bottom: 30px;
+	}
+	
+	.profile {
+		.rowSpan1;
+		.details {
+			margin: 10px 10px 0 10px;
+		}
+	}
+	
+	.wide {
+		.rowSpan1;
+		img {
+			float: right;
+			margin: 10px;
+			max-width:250px;
+			max-height:250px;
+		}
+	}
+	
+	.long {
+		.rowSpan2;
+		img {
+			margin: 10px;
+			max-width:250px;
+			max-height:250px;
+		}
 	}
 }
 
