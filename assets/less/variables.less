@@ -31,6 +31,8 @@
 @orange:                #f89406;
 @pink:                  #c3325f;
 @purple:                #7a43b6;
+@mainGreen:				#006600;
+@highlightGreen:		#00CC00;
 
 
 // Scaffolding
@@ -75,8 +77,8 @@
 @btnBackgroundHighlight:            darken(@white, 10%);
 @btnBorder:                         #ccc;
 
-@btnPrimaryBackground:              @linkColor;
-@btnPrimaryBackgroundHighlight:     spin(@btnPrimaryBackground, 15%);
+@btnPrimaryBackground:              lighten(@mainGreen, 10%);
+@btnPrimaryBackgroundHighlight:     @mainGreen;
 
 @btnInfoBackground:                 #5bc0de;
 @btnInfoBackgroundHighlight:        #2f96b4;
@@ -152,8 +154,8 @@
 @navbarBackgroundHighlight:       @grayDark;
 
 @navbarText:                      @white;
-@navbarLinkColor:                 @white;
-@navbarLinkColorHover:            @grayLight;
+@navbarLinkColor:                 @grayLight;
+@navbarLinkColorHover:            @white;
 @navbarLinkColorActive:           @navbarLinkColorHover;
 @navbarLinkBackgroundHover:       @grayMid;
 @navbarLinkBackgroundActive:      @grayMid;

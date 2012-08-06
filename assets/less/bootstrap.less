@@ -61,6 +61,17 @@
 // Utility classes
 @import "utilities.less"; // Has to be last to override when necessary
 
+// custom fonts
+
+@font-face {
+  font-family: 'Yanone Kaffeesatz';
+  font-style: normal;
+  font-weight: 400;
+  src: local('../fonts/YanoneKaffeesatz-Regular.ttf'), url(http://themes.googleusercontent.com/static/fonts/yanonekaffeesatz/v4/YDAoLskQQ5MOAgvHUQCcLRTHiN2BPBirwIkMLKUspj4.woff) format('woff');
+}
+
+@titleFont: "Yanone Kaffeesatz", @sansFontFamily;
+
 // Custom CSS
 
 @footerHeight: @navbarHeight - 10;
@@ -107,6 +118,7 @@ a:focus {
 	font-size: 24px;
 	font-weight: bold;
 	text-shadow: 1px 1px 1px @black;
+	color: @white;
 }
 
 #filterButton.active {
@@ -122,6 +134,11 @@ a:focus {
 	-moz-box-shadow:    inset 0 0 5px #000000;
 	-webkit-box-shadow: inset 0 0 5px #000000;
 	box-shadow:         inset 0 0 5px #000000;
+	p {
+		margin: 5px;
+		font-size: 11px;
+		color: @grayLight;
+	}
 }
 
 // #main {
@@ -156,6 +173,27 @@ footer {
 		  text-decoration: none;
 		}
 
+	}
+	
+}
+
+.profile {
+	.border-radius(3px);
+}
+
+	/***** About Styles *****/
+	
+#about {
+	div {
+		padding: 10px;
+	}
+	hr {
+		border-color: @grayDark;
+		margin: 10px 0 18px;
+	}
+	h1 {
+		font-family: @titleFont;
+		font-size: 40px;
 	}
 	
 }
