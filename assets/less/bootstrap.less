@@ -145,11 +145,6 @@ a:focus {
 //	margin-top: 18px;
 // }
 
-.row div {
-	overflow: hidden;
-	background: @grayLighter;
-	margin-bottom: 20px;
-}
 
 footer {
 	#gradient > .vertical(@navbarBackgroundHighlight, @navbarBackground);
@@ -178,12 +173,45 @@ footer {
 }
 
 .profile {
+	overflow: hidden;
+	background: @grayLighter;
+	margin-bottom: 20px;
+	cursor: default;
 	.border-radius(3px);
+	-moz-box-shadow:    1px 1px 3px @grayDarker;
+	-webkit-box-shadow: 1px 1px 3px @grayDarker;
+	box-shadow:         1px 1px 3px @grayDarker;
+	&:hover {
+		-moz-box-shadow:    2px 2px 5px @grayDarker;
+		-webkit-box-shadow: 2px 2px 5px @grayDarker;
+		box-shadow:         2px 2px 5px @grayDarker;
+	}
+}
+
+.details {
+	p {
+		margin: 15px 0 0;
+	}
+}
+
+	/***** Profile box style *****/
+	
+#profile-box {
+	img {
+		float: right;
+		max-height: 200px;
+		max-width: 200px;
+	}
+	
+	p {
+		margin: 20px 0;
+	}
 }
 
 	/***** About Styles *****/
 	
 #about {
+//	background: @grayLighter;
 	div {
 		padding: 10px;
 	}
@@ -202,9 +230,16 @@ footer {
 
 @media (max-width: 767px) {
 	.profile {
+		
+		padding: 10px;
+		
 		img {
 			display: none;
 		}
+	}
+	
+	footer {
+		position: relative;
 	}
 }
 	
