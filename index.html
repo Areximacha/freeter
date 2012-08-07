@@ -212,14 +212,39 @@
 	  <div class="modal fade hide" id="registration-box">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h3>Sign Up</h3>
+				<h2>Sign Up</h2>
+				<h4>Enter your name, email and password to sign up</h4>
 			</div>
 			<div class="modal-body">
-				<p>Registration form here</p>
+				<form id="registration-form" class="form-horizontal" method="post">
+					<fieldset>
+						<div class="control-group">
+							<label class="control-label" for="name">Name</label>
+							<div class="controls">
+								<input type="text" class="input-xlarge" id="name">
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="email">Email</label>
+							<div class="controls">
+								<input type="text" class="input-xlarge" id="email">
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="password">Password</label>
+							<div class="controls">
+								<div>
+								<input type="password" class="input-medium" id="password">
+								<input type="password" class="input-medium" id="password-confirm">
+								<p class="help-block" style="margin-left: 225px;">Confirm</p>
+							</div>
+						</div>
+					</fieldset>
+				</form>
 			</div>
 			<div class="modal-footer">
 				<a href="#" class="btn" data-dismiss="modal">Close</a>
-				<a href="#" class="btn btn-primary">Save changes</a>
+				<a id="registration-form-submit" href="#" class="btn btn-primary">Submit</a>
 			</div>
 	  </div>
 
@@ -311,7 +336,17 @@
 			   });
 			   // trigger resize to trigger isotope
 			}).smartresize();
-			 
+			
+			
+			//link the orphan button in the modal to the form
+			$('#registration-form-submit').on('click', function(e){
+				// We don't want this to act as a link so cancel the link action
+				e.preventDefault();
+
+				// Find form and submit it
+				$('#registration-form').submit();
+			});
+
 		});
 	</script>
 	
