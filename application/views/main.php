@@ -1,41 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Freeter</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <!-- Le styles -->
-	<link href="assets/css/style.css" rel="stylesheet">
-	<link rel="stylesheet/less" href="assets/less/bootstrap.less" media="all" />
-    <script src="assets/js/less-1.3.0.min.js"></script>
-	
-    <style type="text/css">
-      body {
-        padding-top: 60px;
-        padding-bottom: 40px;
-      }
-    </style>
-    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
-
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-	
-    <!-- Le fav and touch icons -->
-    <link rel="shortcut icon" href="assets/ico/icon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
-  </head>
-
-  <body>
-
-    <div class="navbar navbar-fixed-top">
+<div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -43,7 +6,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#"><img src="assets/img/logo2.png" alt="Freeter" /></a>
+          <a class="brand" href="#"><img src="<?= base_url('assets/img/logo2.png" alt="Freeter') ?>" /></a>
           <div class="nav-collapse">
 				
 			<ul class="nav pull-right navbar-text">
@@ -100,7 +63,7 @@
           </div>
         </div>
         <div class="profile wide span6 javascript" data-toggle="modal" href="#profile-box">
-          <img src="assets/profilepics/01.jpg" />
+          <img src="<?= base_url('assets/profilepics/01.jpg') ?>" />
 		  <div class="details">
 			  <h2>Stuart Gilbert</h2>
 			  <h4>Perl Developer</h4>
@@ -117,7 +80,7 @@
 		  </div>
 		</div>
 		<div class="profile long span3 javascript html" data-toggle="modal" href="#profile-box">
-          <img src="assets/profilepics/02.jpg" />
+          <img src="<?= base_url('assets/profilepics/02.jpg') ?>" />
 		  <div class="details">
 			  <h2>Amy Stapleton</h2>
 			  <h4>Graphic designer</h4>
@@ -134,7 +97,7 @@
 		  </div>
 		</div>
 		<div class="profile wide span6 javascript css" data-toggle="modal" href="#profile-box">
-          <img src="assets/profilepics/03.jpg" />
+          <img src="<?= base_url('assets/profilepics/03.jpg') ?>" />
 		  <div class="details">
 			  <h2>Jay Tang</h2>
 			  <h4>Web application developer</h4>
@@ -159,7 +122,7 @@
 		  </div>
 		</div>
 		<div class="profile long span3 html" data-toggle="modal" href="#profile-box">
-          <img src="assets/profilepics/04.jpg" />
+          <img src="<?= base_url('assets/profilepics/04.jpg') ?>" />
 		  <div class="details">
 			  <h2>Melody To</h2>
 			  <h4>Web designer</h4>
@@ -187,7 +150,7 @@
 				<h4>Job Title</h4>
 			</div>
 			<div class="modal-body">
-				<img src="assets/profilepics/default.jpg" />
+				<img src="<?= base_url('assets/profilepics/default.jpg') ?>" />
 				<p>Email: <a href="#">email@address.com</a></p>
 				<p>TEL: 07739 325 642</p>
 				<p>Homepage: <a href="#">http://www.yourhomepage.com</a></p>
@@ -249,106 +212,3 @@
 	  </div>
 
     </div> <!-- /container -->
-
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/bootstrap-transition.js"></script>
-    <script src="assets/js/bootstrap-alert.js"></script>
-    <script src="assets/js/bootstrap-modal.js"></script>
-    <script src="assets/js/bootstrap-dropdown.js"></script>
-    <script src="assets/js/bootstrap-scrollspy.js"></script>
-    <script src="assets/js/bootstrap-tab.js"></script>
-    <script src="assets/js/bootstrap-tooltip.js"></script>
-    <script src="assets/js/bootstrap-popover.js"></script>
-    <script src="assets/js/bootstrap-button.js"></script>
-    <script src="assets/js/bootstrap-collapse.js"></script>
-    <script src="assets/js/bootstrap-carousel.js"></script>
-    <script src="assets/js/bootstrap-typeahead.js"></script>
-	<script src="assets/js/jquery.isotope.min.js"></script>
-
-	<!-- Custom scripts -->
-	
-	<script type="text/javascript">
-		$(document).ready(function(){
-
-			// slidetoggle script for displaying the filter menu
-			$("#filterButton").click(function(){
-				$("#filter").slideToggle("slow");
-				$(this).toggleClass("active");
-				 return false;
-			});
-			
-			// isotope for the profiles
-			var $container = $('#content');
-			$container.isotope({
-				containerStyle: {
-					overflow: 'visible',
-					position: 'relative'
-				},
-				filter: '*',
-				animationOptions: {
-					duration: 750,
-					easing: 'linear',
-					queue: false,
-				}
-			});
-			
-			// profile filtering with isotope
-			$('#filter a').click(function(){
-				var $this = $(this),
-				isoFilters = [],
-				$pills = $this.parents('li'),
-				$navPills = $this.parents('.nav-pills'),
-				prop, selector;
-					
-				$this.toggleClass('selected');
-				$pills.toggleClass('active');
-					
-				isoFilters = ($navPills.find('.selected').toArray().map(function(a){
-					return $(a).attr('data-filter')
-				}));
-					
-				selector = isoFilters.join('');
-				$container.isotope({
-					filter: selector,
-					animationOptions: {
-						duration: 750,
-						easing: 'linear',
-						queue: false,
-					}
-				});
-			return false;
-			});
-			
-			// Allowing clicking of email links within the clickable profile divs
-			$('.profile-email').click(function(event){
-				event.stopImmediatePropagation();
-				//alert('link')
-			});
-
-			//triggering isotope after resizing
-			$(window).smartresize(function(){
-			   $container.isotope({
-				 resizable: false, // disable normal resizing
-				 masonry: { columnWidth: $container.width() / 4 }
-			   });
-			   // trigger resize to trigger isotope
-			}).smartresize();
-			
-			
-			//link the orphan button in the modal to the form
-			$('#registration-form-submit').on('click', function(e){
-				// We don't want this to act as a link so cancel the link action
-				e.preventDefault();
-
-				// Find form and submit it
-				$('#registration-form').submit();
-			});
-
-		});
-	</script>
-	
-  </body>
-</html>
