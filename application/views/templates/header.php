@@ -8,7 +8,7 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
-	<link href="<?php echo base_url('assets/css/style.css') ?>" rel="stylesheet">
+	<link href="<?= base_url('assets/css/style.css') ?>" rel="stylesheet">
 	<link rel="stylesheet/less" href="<?= base_url('assets/less/bootstrap.less') ?>" media="all" />
     <script src="<?= base_url('assets/js/less-1.3.0.min.js') ?>"></script>
 	

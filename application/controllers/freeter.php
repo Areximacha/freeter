@@ -2,12 +2,20 @@
 
 	class Freeter extends CI_Controller{
 	
-		function index()
+		public function __construct()
+		{
+			parent::__construct();
+			$this->load->model('freeter_model');
+		}
+		
+		public function index()
 		{
 			$this->load->helper('url');
 			
+			$data['profiles'] = $this->freeter_model->get_profiles();
+			
 			$this->load->view('templates/header');
-			$this->load->view('main');
+			$this->load->view('main', $data);
 			$this->load->view('templates/footer');
 		}
 	

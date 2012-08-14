@@ -54,6 +54,17 @@
 
       <!-- content -->
       <div id="content" class="row">
+		<!-- test stuff -->
+		<?php foreach ($profiles as $profile_item): ?>
+		<div class="profile span3 html css" data-toggle="modal" href="#profile-box">
+          <div class="details">
+			<h2><?= $profile_item['name'] ?></h2>
+			<h4><?= $profile_item['title'] ?></h4>
+			<p>Email: <a href="mailto:<?= $profile_item['email'] ?>"><?= $profile_item['email'] ?></a></p>
+			<p>Tel: <?= $profile_item['tel'] ?></p>
+          </div>
+        </div>
+		<?php endforeach ?>
         <div class="profile span3 html css" data-toggle="modal" href="#profile-box">
           <div class="details">
 			<h2>Pete Goodman</h2>
