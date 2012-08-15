@@ -62,7 +62,14 @@
 			<h4><?= $profile_item['title'] ?></h4>
 			<p>Email: <a href="mailto:<?= $profile_item['email'] ?>"><?= $profile_item['email'] ?></a></p>
 			<p>Tel: <?= $profile_item['tel'] ?></p>
-          </div>
+			<ul>
+			<?php foreach ($profile_item['tags'] as $profile_tags):?>
+			
+			<li><?= $profile_tags['tag'] ?></li>
+			<?php endforeach ?>
+			</ul>
+          
+		  </div>
         </div>
 		<?php endforeach ?>
         <div class="profile span3 html css" data-toggle="modal" href="#profile-box">

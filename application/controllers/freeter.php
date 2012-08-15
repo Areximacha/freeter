@@ -13,6 +13,8 @@
 			$this->load->helper('url');
 			
 			$data['profiles'] = $this->freeter_model->get_profiles();
+			$data['tags'] = $this->freeter_model->get_tags();
+			//$data['profile_tags'] = $this->freeter_model->get_profiletags();
 			
 			$this->load->view('templates/header');
 			$this->load->view('main', $data);
