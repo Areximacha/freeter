@@ -37,125 +37,64 @@
 		<div class="container">
 		<p>Toggle the tags below to filter for profiles that contain those mad skills</p>
 			<ul class="nav nav-pills">
+				<?php foreach ($tags as $tag_item): ?>
 				<li>
-					<a href="#" data-filter=".html">HTML</a>
+					<a href="#" data-filter=".<?= $tag_item['tag'] ?>"><?= $tag_item['tag'] ?></a>
 				</li>
-				<li>
-					<a href="#" data-filter=".javascript">JavaScript</a>
-				</li>
-				<li>
-					<a href="#" data-filter=".css">CSS</a>
-				</li>
+				<?php endforeach ?>
 			</ul>
 		</div>
 	</div>
 
+	<!-- Main container -->
     <div id="main" class="container">
 
       <!-- content -->
       <div id="content" class="row">
-		<!-- test stuff -->
+		
+		<!-- Profile boxes -->
 		<?php foreach ($profiles as $profile_item): ?>
-		<div class="profile span3 html css" data-toggle="modal" href="#profile-box">
-          <div class="details">
+		<div class="profile 
+		<?php if(isset($profile_item['profilepic']))
+		{
+			if(rand(0,10)>3)
+			{
+				if(rand(0,10)>5)
+				{
+					echo "long span3";
+				}
+				else
+				{
+					echo "wide span6";
+				}
+			}
+			else
+			{
+				echo "small span3";
+			}
+		}
+		else
+		{
+			echo "small span3";
+		}
+		?> <?php foreach($profile_item['tags'] as $profile_tags) echo $profile_tags['tag']." ";?>" data-toggle="modal" href="#profile-box">
+          <img src="<?= base_url($profile_item['profilepic']) ?>" />
+		  <div class="details">
 			<h2><?= $profile_item['name'] ?></h2>
 			<h4><?= $profile_item['title'] ?></h4>
-			<p>Email: <a href="mailto:<?= $profile_item['email'] ?>"><?= $profile_item['email'] ?></a></p>
+			<p>Email: <a href="mailto:<?= $profile_item['email'] ?>" class="profile-email"><?= $profile_item['email'] ?></a></p>
 			<p>Tel: <?= $profile_item['tel'] ?></p>
-			<ul>
-			<?php foreach ($profile_item['tags'] as $profile_tags):?>
-			
-			<li><?= $profile_tags['tag'] ?></li>
-			<?php endforeach ?>
-			</ul>
-          
+			<p>
+				Tags: 
+					<!-- do these have to be links? -->
+					<?php foreach ($profile_item['tags'] as $profile_tags):?>
+					<?= "#".$profile_tags['tag'] ?>
+					<?php endforeach ?>
+				
+			</p>
 		  </div>
         </div>
 		<?php endforeach ?>
-        <div class="profile span3 html css" data-toggle="modal" href="#profile-box">
-          <div class="details">
-			<h2>Pete Goodman</h2>
-			<h4>Web developer</h4>
-			<p>Email: <a href="#" class="profile-email">pete.g@gmail.com</a></p>
-			<p>Tel: 07723 373 820</p>
-          </div>
-        </div>
-        <div class="profile wide span6 javascript" data-toggle="modal" href="#profile-box">
-          <img src="<?= base_url('assets/profilepics/01.jpg') ?>" />
-		  <div class="details">
-			  <h2>Stuart Gilbert</h2>
-			  <h4>Perl Developer</h4>
-			  <p>Email: <a href="#">giblet@gmail.com</a></p>
-			  <p>Tel: 07767 475 063</p>
-		  </div>
-		</div>
-        <div class="profile span3 html" data-toggle="modal" href="#profile-box">
-          <div class="details">
-			  <h2>Clark Kent</h2>
-			  <h4>Man of Steel</h4>
-			  <p>Email: <a href="#">superman@jla.com</a></p>
-			  <p>Tel: 07781 680 434</p>
-		  </div>
-		</div>
-		<div class="profile long span3 javascript html" data-toggle="modal" href="#profile-box">
-          <img src="<?= base_url('assets/profilepics/02.jpg') ?>" />
-		  <div class="details">
-			  <h2>Amy Stapleton</h2>
-			  <h4>Graphic designer</h4>
-			  <p>Email: <a href="#">amy.stapleton@yahoo.com</a></p>
-			  <p>Tel: 07745 375 877</p>
-		  </div>
-		</div>
-		<div class="profile span3 css" data-toggle="modal" href="#profile-box">
-          <div class="details">
-			  <h2>Bruce Wayne</h2>
-			  <h4>Detective</h4>
-			  <p>Email: <a href="#">batman@jla.com</a></p>
-			  <p>Tel: 07767 475 063</p>
-		  </div>
-		</div>
-		<div class="profile wide span6 javascript css" data-toggle="modal" href="#profile-box">
-          <img src="<?= base_url('assets/profilepics/03.jpg') ?>" />
-		  <div class="details">
-			  <h2>Jay Tang</h2>
-			  <h4>Web application developer</h4>
-			  <p>Email: <a href="#">min.arachno@gmail.com</a></p>
-			  <p>Tel: 07713 243 456</p>
-          </div>
-		</div>
-		<div class="profile span3 html css javascript" data-toggle="modal" href="#profile-box">
-          <div class="details">
-			  <h2>Barry Allen</h2>
-			  <h4>Fastest man alive</h4>
-			  <p>Email: <a href="#">flash@jla.com</a></p>
-			  <p>Tel: 07786 434 986</p>
-		  </div>
-		</div>
-		<div class="profile span3 css" data-toggle="modal" href="#profile-box">
-          <div class="details">
-			  <h2>Jesse Custer</h2>
-			  <h4>Preacher</h4>
-			  <p>Email: <a href="#">word.of@god.com</a></p>
-			  <p>Tel: 07789 053 137</p>
-		  </div>
-		</div>
-		<div class="profile long span3 html" data-toggle="modal" href="#profile-box">
-          <img src="<?= base_url('assets/profilepics/04.jpg') ?>" />
-		  <div class="details">
-			  <h2>Melody To</h2>
-			  <h4>Web designer</h4>
-			  <p>Email: <a href="#">mel.to@yahoo.com</a></p>
-			  <p>Tel: 07798 834 326</p>
-          </div>
-		</div>
-		<div class="profile span3 html css" data-toggle="modal" href="#profile-box">
-          <div class="details">
-			  <h2>Jennifer Walters</h2>
-			  <h4>Lawyer</h4>
-			  <p>Email: <a href="#">shulkie@avengers.com</a></p>
-			  <p>Tel: 07785 236 789</p>
-          </div>
-		</div>
       </div>
 	  <!-- end of content -->
 	  

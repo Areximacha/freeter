@@ -38,6 +38,8 @@
 		
 		public function get_tags()
 		{
+			$this->db->order_by('id', 'asc');
+			
 			$query = $this->db->get('tags');
 			return $query->result_array();
 		}
