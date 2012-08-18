@@ -54,7 +54,7 @@
 		
 		<!-- Profile boxes -->
 		<?php foreach ($profiles as $profile_item): ?>
-		<div class="profile 
+		<div data-id="<?= $profile_item['id'] ?>" class="profile 
 		<?php if(isset($profile_item['profilepic']))
 		{
 			if(rand(0,10)>3)
@@ -87,9 +87,13 @@
 			<p>
 				Tags: 
 					<!-- do these have to be links? -->
-					<?php foreach ($profile_item['tags'] as $profile_tags):?>
-					<?= "#".$profile_tags['tag'] ?>
-					<?php endforeach ?>
+					<?php 
+					$list_of_tags_for_user = array();
+					foreach ($profile_item['tags'] as $profile_tags){
+						array_push($list_of_tags_for_user, $profile_tags['tag']); 
+					} 
+					echo implode(', ', $list_of_tags_for_user);
+					?>
 				
 			</p>
 		  </div>
@@ -101,13 +105,17 @@
 	  <!-- profile box modal -->
 	  
 	    <div class="modal fade hide" id="profile-box">
+		
+		<!-- include the profile_model view here -->
+			
+			<!--
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h2>Person's Name</h2>
 				<h4>Job Title</h4>
 			</div>
 			<div class="modal-body">
-				<img src="<?= base_url('assets/profilepics/default.jpg') ?>" />
+				<img src="assets/profilepics/default.jpg'" />
 				<p>Email: <a href="#">email@address.com</a></p>
 				<p>TEL: 07739 325 642</p>
 				<p>Homepage: <a href="#">http://www.yourhomepage.com</a></p>
@@ -119,7 +127,11 @@
 			<div class="modal-footer">
 				<a href="#" class="btn" data-dismiss="modal">Close</a>
 			</div>
+			-->
+		
 		</div>
+		
+		
 
 
       <footer>

@@ -49,6 +49,15 @@
 			$query = $this->db->get('users_tags');
 			return $query->result_array();
 		}
+		
+		public function select_profile($id)
+		{
+			$this->db->where('id', $id);
+			
+			$query = $this->db->get('users');
+			
+			return $query->result_array();
+		}
 	
 	}
 

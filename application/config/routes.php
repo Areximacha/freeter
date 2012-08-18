@@ -39,8 +39,8 @@
 */
 
 $route['default_controller'] = "freeter";
-$route['(:any)'] = 'pages/view/$1'; // matches any request and passes param to view() method in pages class
-
+//$route['(:any)'] = 'pages/view/$1'; // matches any request and passes param to view() method in pages class
+//$route['404_override'] = '';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

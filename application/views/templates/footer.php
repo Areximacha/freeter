@@ -94,6 +94,21 @@
 				// Find form and submit it
 				$('#registration-form').submit();
 			});
+			
+			$('[data-toggle="modal"]').click(function(){
+				var id = $(this).data('id');
+								
+				$.ajax({
+					type:	'get',
+					url:	'http://localhost/freeter/index.php/freeter/jenktest',
+					data:	{'id':id},
+					success: function(result)
+					{
+						$('#profile-box').html(result);
+					}
+					
+				});
+			});
 
 		});
 	</script>
