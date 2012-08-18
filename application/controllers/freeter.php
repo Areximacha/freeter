@@ -27,11 +27,9 @@
 			
 			$data['profile'] = $this->freeter_model->select_profile($id);
 			
-			//echo 'penis';
+			
 			$this->load->view('profile_modal', $data);
-			//echo '<pre>';
-			//print_r($data['profile']);
-			//echo '</pre>';
+			
 		}
 	
 	}

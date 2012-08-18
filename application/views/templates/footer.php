@@ -100,8 +100,7 @@
 								
 				$.ajax({
 					type:	'get',
-					url:	'http://localhost/freeter/index.php/freeter/jenktest',
-					data:	{'id':id},
+					url:	'http://localhost/freeter/index.php/freeter/jenktest/' + id,
 					success: function(result)
 					{
 						$('#profile-box').html(result);
