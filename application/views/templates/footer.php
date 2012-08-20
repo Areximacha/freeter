@@ -97,10 +97,10 @@
 			
 			$('[data-toggle="modal"]').click(function(){
 				var id = $(this).data('id');
-								
+					
 				$.ajax({
-					type:	'get',
-					url:	'http://localhost/freeter/index.php/freeter/jenktest/' + id,
+					type:	'post',
+					url:	'<?= base_url("index.php/freeter/get_profile")."/" ?>' + id,
 					success: function(result)
 					{
 						$('#profile-box').html(result);

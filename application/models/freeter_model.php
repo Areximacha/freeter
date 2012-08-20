@@ -19,7 +19,7 @@
 			
 			$this->db->select('users_tags.user_id, tags.*');
 			$this->db->join('users_tags', 'users_tags.tag_id = tags.id');
-			//$this->db->order_by('');
+			
 			$query = $this->db->get('tags');
 			foreach ($query->result() as $row)
 			{
@@ -54,9 +54,19 @@
 		{
 			$this->db->where('id', $id);
 			
-			$query = $this->db->get('users');
+			$user = $this->db->get('users');
+			$user = $user->result_array();
 			
-			return $query->result_array();
+			$this->db->select('tags.tag');
+			$this->db->join('users_tags', 'users_tags.tag_id = tags.id');
+			$this->db->where('users_tags.user_id = '.$id);
+			
+			$query = $this->db->get('tags');
+			$tags = $query->result_array();
+			
+			$user['tags'] = $tags;
+			
+			return $user;
 		}
 	
 	}

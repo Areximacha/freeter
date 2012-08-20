@@ -86,7 +86,7 @@
 			<p>Tel: <?= $profile_item['tel'] ?></p>
 			<p>
 				Tags: 
-					<!-- do these have to be links? -->
+					<!-- implode and output tags -->
 					<?php 
 					$list_of_tags_for_user = array();
 					foreach ($profile_item['tags'] as $profile_tags){
@@ -105,41 +105,17 @@
 	  <!-- profile box modal -->
 	  
 	    <div class="modal fade hide" id="profile-box">
-		
 		<!-- include the profile_model view here -->
-			
-			<!--
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h2>Person's Name</h2>
-				<h4>Job Title</h4>
-			</div>
-			<div class="modal-body">
-				<img src="assets/profilepics/default.jpg'" />
-				<p>Email: <a href="#">email@address.com</a></p>
-				<p>TEL: 07739 325 642</p>
-				<p>Homepage: <a href="#">http://www.yourhomepage.com</a></p>
-				<p>Bio: Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada 
-				magna mollis euismod. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta 
-				sem malesuada magna mollis euismod.</p>
-				<p>Tags: HTML, CSS, PHP, JavaScript, Photoshop, Fireworks, Java, Processing, Video Editing, Audio editing, Graphic design</p>
-			</div>
-			<div class="modal-footer">
-				<a href="#" class="btn" data-dismiss="modal">Close</a>
-			</div>
-			-->
-		
 		</div>
-		
-		
-
-
+				
       <footer>
         <div class="container">
 			<p class="pull-left"><a href="#registration-box" data-toggle="modal">New to Freeter? <strong>Sign up</strong></a></p>
 			<p class="pull-right"><a href="about/">About</a> . <a href="mailto:areximacha@areximacha.com">Contact</a></p>
 		</div>
       </footer>
+	  
+	  <!-- Registration box modal -->
 	  
 	  <div class="modal fade hide" id="registration-box">
 			<div class="modal-header">
@@ -148,6 +124,17 @@
 				<h4>Enter your name, email and password to sign up</h4>
 			</div>
 			<div class="modal-body">
+				<!--Add codeigniter form here -->
+				<?php
+					$form_attributes = array(
+						'id' => 'registration-form', 
+						'class' => 'form-horizontal'
+					);
+					echo form_open(base_url('index.php/freeter/register'));
+					echo form_input();
+				?>
+				
+				<!--
 				<form id="registration-form" class="form-horizontal" method="post">
 					<fieldset>
 						<div class="control-group">
@@ -173,6 +160,7 @@
 						</div>
 					</fieldset>
 				</form>
+				-->
 			</div>
 			<div class="modal-footer">
 				<a href="#" class="btn" data-dismiss="modal">Close</a>

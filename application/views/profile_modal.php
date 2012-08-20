@@ -4,14 +4,24 @@
 	<h4><?= $profile['0']['title'] ?></h4>
 </div>
 <div class="modal-body">
-	<img src="<?= base_url('assets/profilepics/default.jpg') ?>" />
-	<p>Email: <a href="#"><?= $profile['0']['email'] ?></a></p>
+	<img src="<?php if (isset($profile['0']['profilepic'])){
+		echo base_url($profile['0']['profilepic']);
+	}
+	else{
+		echo base_url('assets/profilepics/default.jpg');
+	}
+	?>" />
+	<p>Email: <a href="mailto:<?= $profile['0']['email'] ?>"><?= $profile['0']['email'] ?></a></p>
 	<p>TEL: <?= $profile['0']['tel'] ?></p>
-	<p>Homepage: <a href="#">http://www.yourhomepage.com</a></p>
-	<p>Bio: Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada 
-	magna mollis euismod. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta 
-	sem malesuada magna mollis euismod.</p>
-	<p>Tags: HTML, CSS, PHP, JavaScript, Photoshop, Fireworks, Java, Processing, Video Editing, Audio editing, Graphic design</p>
+	<p>Homepage: <a href="#"><?= $profile['0']['url'] ?></a></p>
+	<p>Bio: <?= $profile['0']['bio'] ?></p>
+	<p>Tags: <?php 
+				$list_of_tags_for_user = array();
+				foreach ($profile['tags'] as $profile_tag){
+					array_push($list_of_tags_for_user, $profile_tag['tag']); 
+				} 
+				echo implode(', ', $list_of_tags_for_user);
+				?></p>
 </div>
 <div class="modal-footer">
 <a href="#" class="btn" data-dismiss="modal">Close</a>
