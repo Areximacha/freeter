@@ -86,8 +86,8 @@
 			}).smartresize();
 			
 			
-			//link the orphan button in the modal to the form
-			$('#registration-form-submit').click(function(e){
+			//ajax for the registration form
+			$('#registration-form-submit').click(function(){
 				var form_data = {
 					reg_name : $('#reg_name').val(),
 					reg_email : $('#reg_email').val(),
@@ -95,9 +95,6 @@
 					reg_password_confirm : $('#reg_password_confirm').val()
 					};
 				
-				e.preventDefault();
-
-				// Find form and submit it
 				$.ajax({
 					type:	'post',
 					url:	'<?= base_url("index.php/freeter/register") ?>',
@@ -107,6 +104,7 @@
 						$('#registration-box').html(result);
 					}
 				});
+				return false;
 			});
 			
 			// ajax request for profile box on click

@@ -39,9 +39,9 @@
 			if ($this->form_validation->run() == FALSE)
 			{
 				//take me back to the form
-				echo validation_errors();
+				//echo validation_errors();
 				//$this->index();
-				//$this->load->view('registration_form');
+				$this->load->view('registration_form');
 			}
 			else
 			{
