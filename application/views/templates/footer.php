@@ -87,7 +87,8 @@
 			
 			
 			//ajax for the registration form
-			$('#registration-form-submit').click(function(){
+			// .live() so that the event handler stays even when content is changed dynamically
+			$('#registration-form-submit').live('click', function(){
 				var form_data = {
 					reg_name : $('#reg_name').val(),
 					reg_email : $('#reg_email').val(),
