@@ -85,6 +85,16 @@
 			   // trigger resize to trigger isotope
 			}).smartresize();
 			
+			//allow registration link to open the form view through the controller
+			$('#reg_link').live('click', function(){
+				$.ajax({
+					url:	'<?= base_url("index.php/freeter/register") ?>',
+					success: function(result)
+					{
+						$('#registration-box').html(result);
+					}
+				});
+			});
 			
 			//ajax for the registration form
 			// .live() so that the event handler stays even when content is changed dynamically
