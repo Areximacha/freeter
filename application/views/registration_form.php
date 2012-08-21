@@ -38,8 +38,8 @@
 
 			$passwordconfirm_attributes = array(
 				'class' => 'input-medium',
-				'name' => 'reg_password-confirm',
-				'id' => 'reg_password-confirm',
+				'name' => 'reg_password_confirm',
+				'id' => 'reg_password_confirm',
 				'value' => ''
 			);
 				

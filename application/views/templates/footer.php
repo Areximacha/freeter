@@ -87,13 +87,27 @@
 			
 			
 			//link the orphan button in the modal to the form
-//			$('#registration-form-submit').on('click', function(e){
-				// We don't want this to act as a link so cancel the link action
-//				e.preventDefault();
+			$('#registration-form-submit').click(function(e){
+				var form_data = {
+					reg_name : $('#reg_name').val(),
+					reg_email : $('#reg_email').val(),
+					reg_password : $('#reg_password').val(),
+					reg_password_confirm : $('#reg_password_confirm').val()
+					};
+				
+				e.preventDefault();
 
 				// Find form and submit it
-//				$('#registration-form').submit();
-//			});
+				$.ajax({
+					type:	'post',
+					url:	'<?= base_url("index.php/freeter/register") ?>',
+					data:	form_data,
+					success: function(result)
+					{
+						$('#registration-box').html(result);
+					}
+				});
+			});
 			
 			// ajax request for profile box on click
 			$('[data-toggle="modal"]').click(function(){
