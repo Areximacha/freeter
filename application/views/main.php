@@ -110,7 +110,7 @@
 				
       <footer>
         <div class="container">
-			<p class="pull-left"><a href="#registration-box" data-toggle="modal">New to Freeter? <strong>Sign up</strong></a></p>
+			<p class="pull-left"><a id="reg_link" href="#registration-box" data-toggle="modal">New to Freeter? <strong>Sign up</strong></a></p>
 			<p class="pull-right"><a href="about/">About</a> . <a href="mailto:areximacha@areximacha.com">Contact</a></p>
 		</div>
       </footer>
@@ -118,54 +118,92 @@
 	  <!-- Registration box modal -->
 	  
 	  <div class="modal fade hide" id="registration-box">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h2>Sign Up</h2>
-				<h4>Enter your name, email and password to sign up</h4>
-			</div>
-			<div class="modal-body">
-				<!--Add codeigniter form here -->
-				<?php
-					$form_attributes = array(
-						'id' => 'registration-form', 
-						'class' => 'form-horizontal'
-					);
-					echo form_open(base_url('index.php/freeter/register'));
-					echo form_input();
-				?>
+		<!-- Registration form view goes here-->
+		<?php
+			$form_attributes = array(
+				'name' => 'registration-form',
+				'id' => 'registration-form', 
+				'class' => 'form-horizontal'
+			);
+			echo form_open(base_url('index.php/freeter/register'), $form_attributes);
+		?>
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h2>Sign Up</h2>
+			<h4>Enter your name, email and password to sign up</h4>
+		</div>
+		<div class="modal-body">
+			<!--Add codeigniter form here -->
+			
+			
+			<?php
+
+				$name_attributes = array(
+					'class' => 'input-xlarge',
+					'name' => 'reg_name',
+					'id' => 'reg_name',
+					'value' => set_value('reg_name')
+				);
 				
-				<!--
-				<form id="registration-form" class="form-horizontal" method="post">
-					<fieldset>
-						<div class="control-group">
-							<label class="control-label" for="name">Name</label>
-							<div class="controls">
-								<input type="text" class="input-xlarge" id="name">
-							</div>
+				$email_attributes = array(
+					'class' => 'input-xlarge',
+					'name' => 'reg_email',
+					'id' => 'reg_email',
+					'value' => set_value('reg_email')
+				);
+
+				$password_attributes = array(
+					'class' => 'input-medium',
+					'name' => 'reg_password',
+					'id' => 'reg_password',
+					'value' => ''
+				);
+
+				$passwordconfirm_attributes = array(
+					'class' => 'input-medium',
+					'name' => 'reg_password-confirm',
+					'id' => 'reg_password-confirm',
+					'value' => ''
+				);
+				
+				$submit_attributes = array(
+					'class' => 'btn btn-primary',
+					'name' => 'registration-form-submit',
+					'id' => 'registration-form-submit',
+				);
+			?>
+			<fieldset>
+				<div class="control-group">
+					<label class="control-label" for="name">Name</label>
+					<div class="controls">
+						<?php echo form_input($name_attributes); ?>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="email">Email</label>
+					<div class="controls">
+						<?php echo form_input($email_attributes); ?>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="password">Password</label>
+					<div class="controls">
+						<div>
+							<?php echo form_password($password_attributes); ?>
+							<?php echo form_password($passwordconfirm_attributes); ?>
+							<p class="help-block" style="margin-left: 225px;">Confirm</p>
 						</div>
-						<div class="control-group">
-							<label class="control-label" for="email">Email</label>
-							<div class="controls">
-								<input type="text" class="input-xlarge" id="email">
-							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="password">Password</label>
-							<div class="controls">
-								<div>
-								<input type="password" class="input-medium" id="password">
-								<input type="password" class="input-medium" id="password-confirm">
-								<p class="help-block" style="margin-left: 225px;">Confirm</p>
-							</div>
-						</div>
-					</fieldset>
-				</form>
-				-->
-			</div>
-			<div class="modal-footer">
-				<a href="#" class="btn" data-dismiss="modal">Close</a>
-				<a id="registration-form-submit" href="#" class="btn btn-primary">Submit</a>
-			</div>
+					</div>
+					<div>
+						<p><?= validation_errors() ?></p>
+					</div>
+				</div>
+			</fieldset>
+		</div>
+		<div class="modal-footer">
+			<a href="#" class="btn" data-dismiss="modal">Close</a>
+			<?php echo form_submit($submit_attributes, 'Submit'); ?>			
+		</div>
 	  </div>
 
     </div> <!-- /container -->

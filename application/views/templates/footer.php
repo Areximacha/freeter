@@ -87,14 +87,15 @@
 			
 			
 			//link the orphan button in the modal to the form
-			$('#registration-form-submit').on('click', function(e){
+//			$('#registration-form-submit').on('click', function(e){
 				// We don't want this to act as a link so cancel the link action
-				e.preventDefault();
+//				e.preventDefault();
 
 				// Find form and submit it
-				$('#registration-form').submit();
-			});
+//				$('#registration-form').submit();
+//			});
 			
+			// ajax request for profile box on click
 			$('[data-toggle="modal"]').click(function(){
 				var id = $(this).data('id');
 					
