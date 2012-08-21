@@ -91,7 +91,7 @@
 					url:	'<?= base_url("index.php/freeter/register") ?>',
 					success: function(result)
 					{
-						$('#registration-box').html(result);
+						$('#content-box').html(result);
 					}
 				});
 			});
@@ -112,7 +112,7 @@
 					data:	form_data,
 					success: function(result)
 					{
-						$('#registration-box').html(result);
+						$('#content-box').html(result);
 					}
 				});
 				return false;
@@ -127,7 +127,7 @@
 					url:	'<?= base_url("index.php/freeter/get_profile")."/" ?>' + id,
 					success: function(result)
 					{
-						$('#profile-box').html(result);
+						$('#content-box').html(result);
 					}
 					
 				});

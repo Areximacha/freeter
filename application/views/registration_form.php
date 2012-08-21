@@ -1,3 +1,4 @@
+<div id="registration-box">
 <?php
 	$form_attributes = array(
 		'name' => 'registration-form',
@@ -81,3 +82,4 @@
 		<a href="#" class="btn" data-dismiss="modal">Close</a>
 		<?php echo form_submit($submit_attributes, 'Submit'); ?>			
 	</div>
+</div>

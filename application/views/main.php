@@ -77,7 +77,7 @@
 		{
 			echo "small span3";
 		}
-		?> <?php foreach($profile_item['tags'] as $profile_tags) echo $profile_tags['tag']." ";?>" data-toggle="modal" href="#profile-box">
+		?> <?php foreach($profile_item['tags'] as $profile_tags) echo $profile_tags['tag']." ";?>" data-toggle="modal" href="#content-box">
           <img src="<?= base_url($profile_item['profilepic']) ?>" />
 		  <div class="details">
 			<h2><?= $profile_item['name'] ?></h2>
@@ -101,24 +101,18 @@
 		<?php endforeach ?>
       </div>
 	  <!-- end of content -->
-	  
-	  <!-- profile box modal -->
-	  
-	    <div class="modal fade hide" id="profile-box">
-		<!-- include the profile_model view here -->
-		</div>
-				
+	
       <footer>
         <div class="container">
-			<p class="pull-left"><a id="reg_link" href="#registration-box" data-toggle="modal">New to Freeter? <strong>Sign up</strong></a></p>
+			<p class="pull-left"><a id="reg_link" href="#content-box" data-toggle="modal">New to Freeter? <strong>Sign up</strong></a></p>
 			<p class="pull-right"><a href="about/">About</a> . <a href="mailto:areximacha@areximacha.com">Contact</a></p>
 		</div>
       </footer>
 	  
-	  <!-- Registration box modal -->
+	  <!-- Dynamic content modal -->
 	  
-	  <div class="modal fade hide" id="registration-box">
-		<!-- Registration form view goes here-->
+	  <div class="modal fade hide" id="content-box">
+		<!-- dynamic content goes here from views-->
 	  </div>
 
     </div> <!-- /container -->
