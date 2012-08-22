@@ -68,6 +68,17 @@
 			
 			return $user;
 		}
+		
+		public function add_user($reg_name, $reg_email, $reg_password)
+		{
+			$data = array(
+				'name' => $reg_name,
+				'email' => $reg_email,
+				'password' => $reg_password
+			);
+			
+			$this->db->insert('users', $data);
+		}
 	
 	}
 

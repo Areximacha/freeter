@@ -18,29 +18,29 @@
 		<?php
 			$name_attributes = array(
 				'class' => 'input-xlarge',
-				'name' => 'reg_name',
-				'id' => 'reg_name',
-				'value' => set_value('reg_name')
+				'name' => 'name',
+				'id' => 'name',
+				'value' => set_value('name')
 			);
 			
 			$email_attributes = array(
 				'class' => 'input-xlarge',
-				'name' => 'reg_email',
-				'id' => 'reg_email',
-				'value' => set_value('reg_email')
+				'name' => 'email',
+				'id' => 'email',
+				'value' => set_value('email')
 			);
 
 			$password_attributes = array(
 				'class' => 'input-medium',
-				'name' => 'reg_password',
-				'id' => 'reg_password',
+				'name' => 'password',
+				'id' => 'password',
 				'value' => ''
 			);
 
 			$passwordconfirm_attributes = array(
 				'class' => 'input-medium',
-				'name' => 'reg_password_confirm',
-				'id' => 'reg_password_confirm',
+				'name' => 'password_confirm',
+				'id' => 'password_confirm',
 				'value' => ''
 			);
 				

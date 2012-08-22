@@ -86,7 +86,7 @@
 			}).smartresize();
 			
 			//allow registration link to open the form view through the controller
-			$('#reg_link').live('click', function(){
+			$('#reg_link').on('click', function(){
 				$.ajax({
 					url:	'<?= base_url("index.php/freeter/register") ?>',
 					success: function(result)
@@ -100,10 +100,10 @@
 			// .live() so that the event handler stays even when content is changed dynamically
 			$('#registration-form-submit').live('click', function(){
 				var form_data = {
-					reg_name : $('#reg_name').val(),
-					reg_email : $('#reg_email').val(),
-					reg_password : $('#reg_password').val(),
-					reg_password_confirm : $('#reg_password_confirm').val()
+					name : $('#name').val(),
+					email : $('#email').val(),
+					password : $('#password').val(),
+					password_confirm : $('#password_confirm').val()
 					};
 				
 				$.ajax({
