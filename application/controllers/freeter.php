@@ -50,7 +50,134 @@
 				
 				$this->freeter_model->add_user($reg_name, $reg_email, $reg_password);
 				
-				$this->load->view('edit_profile');
+				$this->check_login($reg_password);
+				
+				$session_id = $this->session->userdata['user_data']['id'];
+				
+				$data['logged_in_profile'] = $this->freeter_model->select_profile($session_id);
+				$data['tags'] = $this->freeter_model->get_tags();
+				
+				$this->load->view('edit_profile', $data);
+			}
+		}
+		
+		public function open_edit_profile()
+		{
+			$session_id = $this->session->userdata['user_data']['id'];
+				
+			$data['logged_in_profile'] = $this->freeter_model->select_profile($session_id);
+			$data['tags'] = $this->freeter_model->get_tags();
+				
+			//echo '<pre>';
+			//echo print_r($data);
+			//echo '</pre>';
+			$this->load->view('edit_profile', $data);
+		}
+		
+		public function edit_profile()
+		{
+			$this->form_validation->set_rules('editname', 'Name', 'trim|required|xss_clean');
+			
+			if($this->input->post('edittitle')):
+				$this->form_validation->set_rules('edittitle', 'Title', 'trim|xss_clean');
+			endif;
+			
+			if($this->input->post('edittel')):
+				$this->form_validation->set_rules('edittel', 'Tel', 'trim|xxs_clean');
+			endif;
+			
+			if($this->input->post('editurl')):
+				$this->form_validation->set_rules('editurl', 'URL', 'trim|xxs_clean');
+			endif;
+			
+			if($this->input->post('editbio')):
+				$this->form_validation->set_rules('editbio', 'Bio', 'trim|xxs_clean');
+			endif;
+			
+			if($this->input->post('addtags')):
+				$this->form_validation->set_rules('addtags', 'New tags', 'trim|xxs_clean');
+			endif;
+			
+			if($this->input->post('tags')):
+				$this->form_validation->set_rules('tags', 'Tags', 'xxs_clean');
+			endif;
+			
+			if ($this->form_validation->run() == FALSE)
+			{
+				$this->open_edit_profile();
+			}
+			else
+			{
+				$id = $this->session->userdata['user_data']['id'];
+				$edit_name = $this->input->post('editname');
+				$edit_title = $this->input->post('edittitle');
+				$edit_tel = $this->input->post('edittel');
+				$edit_url = $this->input->post('editurl');
+				$edit_bio = $this->input->post('editbio');
+				$edit_tags = $this->input->post('tags');
+				
+				$new_tags = explode(',', $this->input->post('addtags'));
+				
+				foreach($new_tags as $key => $item)
+				{
+					trim($item);
+				}
+				
+				//tags are not working yet
+				echo '<pre>';
+				echo print_r($edit_tags);
+				echo '</pre>';
+				
+				
+				//$this->freeter_model->update_user($id, $edit_name, $edit_title, $edit_tel, $edit_url, $edit_bio, $edit_tags, $new_tags);
+			}
+			
+		}
+		
+		public function login_user()
+		{
+			$this->form_validation->set_rules('email', 'Email address', 'strtolower|trim|xss_clean');
+			$this->form_validation->set_rules('password', 'Password', 'trim|sha1|callback_check_login');
+			
+			if($this->form_validation->run() == FALSE)
+			{
+				$this->load->view('templates/login_form');
+			}
+			else
+			{
+				$session_id = $this->session->userdata['user_data']['id'];
+				$data['logged_in_profile'] = $this->freeter_model->select_profile($session_id);
+				
+				$this->load->view('templates/logged_in_box', $data);
+				
+				//echo '<pre>';
+				//echo print_r($data['logged_in_profile']);
+				//echo '</pre>';
+			}
+		}
+		
+		function check_login($login_password)
+		{
+			$login_email = $this->input->post('email');
+			
+			$result = $this->freeter_model->login($login_email, $login_password);
+			
+			if($result)
+			{
+				$sess_array = array();
+				foreach($result as $row)
+				{
+					$sess_array = array(
+						'id' => $row->id,
+					);
+					$this->session->set_userdata('user_data', $sess_array);
+				}
+				return TRUE;
+			}
+			else
+			{
+				$this->form_validation->set_message('check_login', 'Invalid email or password');
+				return false;
 			}
 		}
 	

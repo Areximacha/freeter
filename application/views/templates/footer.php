@@ -98,7 +98,7 @@
 			
 			//ajax for the registration form
 			// .live() so that the event handler stays even when content is changed dynamically
-			$('#registration-form-submit').live('click', function(){
+			$('#content-box').on('click', '#registration-form-submit', function(){
 				var form_data = {
 					name : $('#name').val(),
 					email : $('#email').val(),
@@ -118,6 +118,26 @@
 				return false;
 			});
 			
+			//ajax request for login form
+			$('#top-right').on('click', '#login_submit', function(){
+			
+				var login_data = {
+					email : $('#login_email').val(),
+					password : $('#login_password').val()
+					};
+				
+				$.ajax({
+					type:	'post',
+					url:	'<?= base_url("index.php/freeter/login_user") ?>',
+					data:	login_data,
+					success: function(result)
+					{
+						$('#top-right').html(result);
+					}
+				});
+				return false;
+			});
+			
 			// ajax request for profile box on click
 			$('[data-toggle="modal"]').click(function(){
 				var id = $(this).data('id');
@@ -130,6 +150,18 @@
 						$('#content-box').html(result);
 					}
 					
+				});
+			});
+			
+			//allow name link to open the edit profile form view through the controller
+			$('#top-right').on('click', '#edit_profile_link', function(){
+				
+				$.ajax({
+					url:	'<?= base_url("index.php/freeter/open_edit_profile") ?>',
+					success: function(result)
+					{
+						$('#content-box').html(result);
+					}
 				});
 			});
 

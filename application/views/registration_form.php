@@ -72,9 +72,17 @@
 						<p class="help-block" style="margin-left: 225px;">Confirm</p>
 					</div>
 				</div>
-				<div>
-					<p><?= validation_errors() ?></p>
-				</div>
+				<?php 
+				if(validation_errors())
+				{
+				?>
+					<div class="alert alert-error">
+						<p><?= validation_errors() ?></p>
+					</div>
+				<?php
+				}
+				?>
+			
 			</div>
 		</fieldset>
 	</div>

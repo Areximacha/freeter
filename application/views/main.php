@@ -8,21 +8,61 @@
           </a>
           <a class="brand" href="#"><img src="<?= base_url('assets/img/logo2.png" alt="Freeter') ?>" /></a>
           <div class="nav-collapse">
-				
-			<ul class="nav pull-right navbar-text">
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle navbar-link" data-toggle="dropdown">Already have an account? <strong>Sign in</strong></a>
-					<!-- dropdown login form -->
-					<div class="dropdown-menu dropdown-form">
-						<form style="line-height: 40px">
-							<input id="user_username" style="margin-bottom: 15px;" type="text" name="user[username]" size="30" placeholder="Email" />
-							<input id="user_password" style="margin-bottom: 15px;" type="password" name="user[password]" size="30" placeholder="Password" />
-							<br />					 
-							<input class="btn btn-primary" style="margin:0; clear: left; width: 100%; max-width: 400px; height: 32px; font-size: 13px;" type="submit" name="commit" value="Sign In" />
-						</form>
-					</div>
-				</li>
-			</ul>
+			
+			<div id="top-right">
+			<!-- This needs to become dynamic content-->
+				<ul class="nav pull-right navbar-text">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle navbar-link" data-toggle="dropdown">Already have an account? <strong>Sign in</strong></a>
+						
+						<div class="dropdown-menu dropdown-form">
+							<?php
+								$form_attributes = array(
+									'name' => 'login-form',
+									'id' => 'login-form', 
+									'style' => 'line-height: 40px'
+								);
+								echo form_open(base_url('index.php/freeter/login_user'), $form_attributes);
+								
+								$login_email_attributes = array(
+									'id' => 'login_email',
+									'style' => 'margin: 0 2px 15px;',
+									'name' => 'email',
+									'size' => '30',
+									'placeholder' => 'Email',
+									'value' => ''
+								);
+								
+								$login_password_attributes = array(
+									'id' => 'login_password',
+									'style' => 'margin: 0 2px 15px;',
+									'name' => 'password',
+									'size' => '30',
+									'placeholder' => 'Password',
+									'value' => ''
+								);
+								
+								$login_submit_attributes = array(
+									'id' => 'login_submit',
+									'class' => 'btn btn-primary',
+									'style' => 'margin:0; clear: left; width: 100%; max-width: 400px; height: 32px; font-size: 13px;',
+									'type' => 'submit',
+									'name' => 'login_submit'
+								);
+								
+								echo form_input($login_email_attributes); 
+								echo form_password($login_password_attributes);
+							?>
+								<br />						 
+								<?php echo form_submit($login_submit_attributes, 'Sign In'); ?>
+								
+								<p><?= validation_errors() ?></p>
+							
+						</div>
+					</li>
+				</ul>
+			</div>
+			
 			
 			<ul class="nav" id="filternav">
 				  <li><a href="#" id="filterButton"> Filter</a></li>

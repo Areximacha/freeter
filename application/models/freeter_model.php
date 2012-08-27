@@ -79,6 +79,38 @@
 			
 			$this->db->insert('users', $data);
 		}
+		
+		public function login($email, $password)
+		{
+			$this->db->where('email = '."'".$email."'");
+			$this->db->where('password = '."'".$password."'");
+			$this->db->limit(1);
+			
+			$query = $this->db->get('users');
+			
+			if($query -> num_rows() == 1)
+			{
+				return $query->result();
+			}
+			else
+			{
+				return false;
+			}
+		}
+		
+		public function update_user($id, $name, $title, $tel, $url, $bio, $tags, $new_tags)
+		{
+			$data = array(
+				'name' => $name,
+				'title' => $title,
+				'tel' => $tel,
+				'url' => $url,
+				'bio' => $bio
+			);
+			
+			$this->db->where('id', $id);
+			$this->db->update('users', $data);
+		}
 	
 	}
 
