@@ -95,7 +95,7 @@
 			endif;
 			
 			if($this->input->post('addtags')):
-				$this->form_validation->set_rules('addtags', 'New tags', 'trim|xxs_clean');
+				$this->form_validation->set_rules('addtags', 'New tags', 'strtolower|trim|xxs_clean');
 			endif;
 			
 			if($this->input->post('tags')):
@@ -109,6 +109,34 @@
 			else
 			{
 				$id = $this->session->userdata['user_data']['id'];
+				
+				// upload profile pic if submitted
+				if (!empty($_FILES['profilepic']) && $_FILES['profilepic']['size'] > 0)
+				{
+					//get file name
+					$file = basename($_FILES['profilepic']['name']);
+					//get file extension
+					$extension = substr($file, strripos($file, '.'));
+					//change file name to comic id and add extension
+					$file = $id.$extension;
+					
+					$config['file_name'] = $file;
+					$config['upload_path'] = './assets/profilepics/';
+					$config['allowed_types'] = 'gif|jpg|png';
+					$config['max_size'] = '250';
+					$config['overwrite'] = TRUE;
+					
+					$this->load->library('upload', $config);
+					
+					$profilepic = 'profilepic';
+					$this->upload->do_upload($profilepic);
+					
+					$edit_profilepic = 'assets/profilepics/'.$file;
+					
+					$this->freeter_model->update_profilepic($id, $edit_profilepic);
+				
+				}
+				
 				$edit_name = $this->input->post('editname');
 				$edit_title = $this->input->post('edittitle');
 				$edit_tel = $this->input->post('edittel');
@@ -116,20 +144,22 @@
 				$edit_bio = $this->input->post('editbio');
 				$edit_tags = $this->input->post('tags');
 				
-				$new_tags = explode(',', $this->input->post('addtags'));
+				$new_tags = array();
+				if($this->input->post('addtags')):
+					$new_tags = explode(',', $this->input->post('addtags'));
+				endif;
 				
 				foreach($new_tags as $key => $item)
 				{
-					trim($item);
+					$new_tags[$key] = trim($item);
 				}
 				
-				//tags are not working yet
-				echo '<pre>';
-				echo print_r($edit_tags);
-				echo '</pre>';
+				//echo '<pre>';
+				//echo print_r($edit_tags);
+				//echo '</pre>';
 				
+				$this->freeter_model->update_user($id, $edit_name, $edit_title, $edit_tel, $edit_url, $edit_bio, $edit_tags, $new_tags);
 				
-				//$this->freeter_model->update_user($id, $edit_name, $edit_title, $edit_tel, $edit_url, $edit_bio, $edit_tags, $new_tags);
 			}
 			
 		}
@@ -168,7 +198,7 @@
 				foreach($result as $row)
 				{
 					$sess_array = array(
-						'id' => $row->id,
+						'id' => $row->id,						
 					);
 					$this->session->set_userdata('user_data', $sess_array);
 				}

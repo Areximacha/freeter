@@ -59,7 +59,7 @@
 			
 			$this->db->select('tags.tag');
 			$this->db->join('users_tags', 'users_tags.tag_id = tags.id');
-			$this->db->where('users_tags.user_id = '.$id);
+			$this->db->where('users_tags.user_id', $id);
 			
 			$query = $this->db->get('tags');
 			$tags = $query->result_array();
@@ -82,8 +82,8 @@
 		
 		public function login($email, $password)
 		{
-			$this->db->where('email = '."'".$email."'");
-			$this->db->where('password = '."'".$password."'");
+			$this->db->where('email', $email);
+			$this->db->where('password', $password);
 			$this->db->limit(1);
 			
 			$query = $this->db->get('users');
@@ -110,6 +110,79 @@
 			
 			$this->db->where('id', $id);
 			$this->db->update('users', $data);
+			
+			// insert new tags into database
+			if($new_tags)
+			{
+				$this->add_tags($new_tags);
+			}
+			
+			// update relationship between tags and users in link table
+			// first delete all instances of user tags
+			$this->db->delete('users_tags', array('user_id' => $id));
+			
+			$new_tags_id = array();
+			if($new_tags)
+			{
+				
+				
+				foreach ($new_tags as $key)
+				{
+					$this->db->select('id');
+					$this->db->where('tag =', $key);
+					
+					$query = $this->db->get('tags');
+					
+					$new_tag_id = $query->result_array();
+					
+					array_push($new_tags_id, $new_tag_id[0]['id']);
+					
+				}
+			}
+			
+			// Then add all the new ones in
+			if ($tags)
+			{
+				$this->add_users_tags($id, $tags);
+			}
+			
+			if ($new_tags_id)
+			{
+				$this->add_users_tags($id, $new_tags_id);
+			}
+			
+			//return $new_tag_id[0]['id'];
+			
+			//return $tags;
+
+		}
+		
+		public function update_profilepic($id, $profilepic)
+		{
+			$this->db->where('id', $id);
+			$this->db->update('users', array('profilepic' => $profilepic));
+		}
+		
+		public function add_tags($new_tags)
+		{
+			foreach ($new_tags as $new_tag)
+			{
+				$this->db->where('tag', $new_tag);
+				$query = $this->db->get('tags');
+				if ($query->num_rows() == 0)
+				{
+					$this->db->insert('tags', array('tag' => $new_tag));
+				}
+				
+			}
+		}
+		
+		public function add_users_tags($id, $tags)
+		{
+			foreach ($tags as $tag_id)
+				{
+					$this->db->insert('users_tags', array('user_id' => $id, 'tag_id' => $tag_id));
+				}
 		}
 	
 	}

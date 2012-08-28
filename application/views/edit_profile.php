@@ -57,7 +57,8 @@
 				'id' => 'editbio',
 				'rows' => '4',
 				'class' => 'span4',
-				'placeholder' => 'Type a short description about yourself here...'
+				'placeholder' => 'Type a short description about yourself here...',
+				'value' => $logged_in_profile['0']['bio']
 			);
 			
 			$addtags_attributes = array(
@@ -74,7 +75,13 @@
 				'id' => 'profile-edit-submit',
 			);
 		?>
-			<img src="assets/profilepics/default.jpg" />
+			<img src="<?php if (isset($logged_in_profile['0']['profilepic'])){
+								echo base_url($logged_in_profile['0']['profilepic']);
+							}
+							else{
+								echo base_url('assets/profilepics/default.jpg');
+							}
+						?>" />
 						
 			<div class="input-group">
 				<label for="editname">Name </label><?php echo form_input($name_attributes); ?>
@@ -89,7 +96,7 @@
 				<label for="editurl">Homepage </label><?php echo form_input($url_attributes); ?>
 			</div>
 			<div class="input-group">
-				<label for="editurl">Profile pic </label><?php echo form_upload(); ?>
+				<label for="editprofilepic">Profile pic </label><?php echo form_upload($upload_attributes); ?>
 			</div>
 			<div class="input-group">
 				<label for="editbio">Bio </label><?php echo form_textarea($bio_attributes); ?>
