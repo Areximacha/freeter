@@ -116,7 +116,9 @@ class Freeter extends CI_Controller{
 
 		if ($this->form_validation->run() == FALSE)
 		{
-			$this->open_edit_profile();
+			$this->load->view('templates/header');
+			$this->load->view('error_view');
+			$this->load->view('templates/footer');
 		}
 		else
 		{
@@ -192,7 +194,9 @@ class Freeter extends CI_Controller{
 			$session_id = $this->session->userdata['user_data']['id'];
 			$data['logged_in_profile'] = $this->freeter_model->select_profile($session_id);
 
-			$this->load->view('templates/logged_in_box', $data);
+			header('Location: '.base_url());
+			
+			//$this->load->view('templates/logged_in_box', $data);
 
 			//echo '<pre>';
 			//echo print_r($data['logged_in_profile']);

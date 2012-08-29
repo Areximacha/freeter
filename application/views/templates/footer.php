@@ -119,24 +119,24 @@
 			});
 			
 			//ajax request for login form
-			$('#top-right').on('click', '#login_submit', function(){
+			//$('#top-right').on('click', '#login_submit', function(){
 			
-				var login_data = {
-					email : $('#login_email').val(),
-					password : $('#login_password').val()
-					};
-				
-				$.ajax({
-					type:	'post',
-					url:	'<?= base_url("index.php/freeter/login_user") ?>',
-					data:	login_data,
-					success: function(result)
-					{
-						$('#top-right').html(result);
-					}
-				});
-				return false;
-			});
+			//	var login_data = {
+			//		email : $('#login_email').val(),
+			//		password : $('#login_password').val()
+			//		};
+			//	
+			//	$.ajax({
+			//		type:	'post',
+			//		url:	'<?= base_url("index.php/freeter/login_user") ?>',
+			//		data:	login_data,
+			//		success: function(result)
+			//		{
+			//			$('#top-right').html(result);
+			//		}
+			//	});
+			//	return false;
+			//});
 			
 			// ajax request for profile box on click
 			$('[data-toggle="modal"]').click(function(){
