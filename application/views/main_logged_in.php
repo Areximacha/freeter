@@ -10,57 +10,33 @@
           <div class="nav-collapse">
 			
 			<div id="top-right">
-			<!-- This needs to become dynamic content-->
-				<ul class="nav pull-right navbar-text">
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle navbar-link" data-toggle="dropdown">Already have an account? <strong>Sign in</strong></a>
+				<div id="nav-profile" class="pull-right">
+					<a id="edit_profile_link" href="#content-box" data-toggle="modal" class="navbar-link"><strong><?= $logged_in_profile['0']['name']?></strong></a>
+					<img src="<?php if (isset($logged_in_profile['0']['profilepic'])){
+							echo base_url($logged_in_profile['0']['profilepic']);
+						}
+						else{
+							echo base_url('assets/profilepics/default.jpg');
+						}
+						?>" />
+					<?php
+						$form_attributes = array(
+							'name' => 'logout_form',
+							'id' => 'logout_form'
+						);
 						
-						<div class="dropdown-menu dropdown-form">
-							<?php
-								$form_attributes = array(
-									'name' => 'login-form',
-									'id' => 'login-form', 
-									'style' => 'line-height: 40px'
-								);
-								echo form_open(base_url('index.php/freeter/login_user'), $form_attributes);
-								
-								$login_email_attributes = array(
-									'id' => 'login_email',
-									'style' => 'margin: 0 2px 15px;',
-									'name' => 'email',
-									'size' => '30',
-									'placeholder' => 'Email',
-									'value' => ''
-								);
-								
-								$login_password_attributes = array(
-									'id' => 'login_password',
-									'style' => 'margin: 0 2px 15px;',
-									'name' => 'password',
-									'size' => '30',
-									'placeholder' => 'Password',
-									'value' => ''
-								);
-								
-								$login_submit_attributes = array(
-									'id' => 'login_submit',
-									'class' => 'btn btn-primary',
-									'style' => 'margin:0; clear: left; width: 100%; max-width: 400px; height: 32px; font-size: 13px;',
-									'type' => 'submit',
-									'name' => 'login_submit'
-								);
-								
-								echo form_input($login_email_attributes); 
-								echo form_password($login_password_attributes);
-							?>
-								<br />						 
-								<?php echo form_submit($login_submit_attributes, 'Sign In'); ?>
-								
-								<p><?= validation_errors() ?></p>
-							
-						</div>
-					</li>
-				</ul>
+						$logout_attributes = array(
+							'class' => 'btn btn-primary',
+							'style' => 'margin:0; clear: left; height: 32px; font-size: 13px;',
+							'name' => 'logout',
+							'value' => 'Logout'
+						);
+						
+						echo form_open(base_url('index.php/freeter/logout'), $form_attributes);
+						echo form_submit($logout_attributes, 'Logout');
+					?>
+					
+				</div>
 			</div>
 			
 			
@@ -148,7 +124,6 @@
 	
       <footer>
         <div class="container">
-			<p class="pull-left"><a id="reg_link" href="#content-box" data-toggle="modal">New to Freeter? <strong>Sign up</strong></a></p>
 			<p class="pull-right"><a href="about/">About</a> . <a href="mailto:areximacha@areximacha.com">Contact</a></p>
 		</div>
       </footer>
