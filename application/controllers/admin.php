@@ -21,7 +21,7 @@ class Admin extends CI_Controller{
 			
 			//echo "admin";
 			$this->load->view('templates/header');
-			$this->load->view('admin_view', $data);
+			$this->load->view('main_logged_in', $data);
 			$this->load->view('templates/footer');
 		}
 		else
