@@ -20,9 +20,16 @@ class Freeter extends CI_Controller{
 			$session_id = $this->session->userdata['user_data']['id'];
 			$data['logged_in_profile'] = $this->freeter_model->select_profile($session_id);
 			
-			$this->load->view('templates/header');
-			$this->load->view('main_logged_in', $data);
-			$this->load->view('templates/footer');
+			if($session_id == 1)
+			{
+				header('Location: '.base_url('index.php/admin/'));
+			}
+			else
+			{
+				$this->load->view('templates/header');
+				$this->load->view('main_logged_in', $data);
+				$this->load->view('templates/footer');
+			}
 		}
 		else
 		{
@@ -75,15 +82,26 @@ class Freeter extends CI_Controller{
 
 	public function open_edit_profile()
 	{
-		$session_id = $this->session->userdata['user_data']['id'];
+		
+		if($this->input->post('id'))
+		{
+			$selected_user = $this->input->post('id');
+		}
+		else
+		{
+			$selected_user =  $this->session->userdata['user_data']['id'];
+		}
+			//$session_id = $this->session->userdata['user_data']['id'];
 
-		$data['logged_in_profile'] = $this->freeter_model->select_profile($session_id);
-		$data['tags'] = $this->freeter_model->get_tags();
+			$data['logged_in_profile'] = $this->freeter_model->select_profile($this->session->userdata['user_data']['id']);
+			$data['selected_profile'] = $this->freeter_model->select_profile($selected_user);
+			$data['tags'] = $this->freeter_model->get_tags();
 
-		//echo '<pre>';
-		//echo print_r($data);
-		//echo '</pre>';
-		$this->load->view('edit_profile', $data);
+			//echo '<pre>';
+			//echo print_r($data);
+			//echo '</pre>';
+			$this->load->view('edit_profile', $data);
+
 	}
 
 	public function edit_profile()
@@ -115,7 +133,14 @@ class Freeter extends CI_Controller{
 			$this->form_validation->set_rules('tags', 'Tags', 'xxs_clean');
 		endif;
 
-		$id = $this->session->userdata['user_data']['id'];
+		if ($this->input->post('id') && $this->session->userdata['user_data']['id'] == 1)
+		{
+			$id = $this->input->post('id');
+		}
+		else
+		{
+			$id = $this->session->userdata['user_data']['id'];
+		}
 
 			// upload profile pic if submitted
 			if (!empty($_FILES['profilepic']) && $_FILES['profilepic']['size'] > 0)
@@ -208,8 +233,14 @@ class Freeter extends CI_Controller{
 			$session_id = $this->session->userdata['user_data']['id'];
 			$data['logged_in_profile'] = $this->freeter_model->select_profile($session_id);
 
-			header('Location: '.base_url());
-			
+			if($session_id == 1)
+			{
+				header('Location: '.base_url('index.php/admin/'));
+			}
+			else
+			{
+				header('Location: '.base_url());
+			}
 			//$this->load->view('templates/logged_in_box', $data);
 
 			//echo '<pre>';

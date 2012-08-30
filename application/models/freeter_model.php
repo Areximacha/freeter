@@ -190,6 +190,20 @@
 					}
 				}
 		}
+		
+		public function delete_user($id)
+		{
+			$this->db->where('id', $id);
+			
+			if($this->db->delete('users'))
+			{
+				return TRUE;
+			}
+			else
+			{
+				return FALSE;
+			}
+		}
 	
 	}
 

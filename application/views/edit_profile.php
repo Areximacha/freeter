@@ -4,12 +4,24 @@
 		'name' => 'edit_profile',
 		'id' => 'edit_profile'
 	);
-	echo form_open_multipart(base_url('index.php/freeter/edit_profile'), $form_attributes);
+	
+	if($logged_in_profile['0']['id'] == 1)
+	{
+		$hidden = array(
+			'id' => $selected_profile['0']['id']
+		);
+	}
+	else
+	{
+		$hidden = array();
+	}
+	
+	echo form_open_multipart(base_url('index.php/freeter/edit_profile'), $form_attributes, $hidden);
 ?>
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal">&times;</button>
 			<h2>Edit Profile</h2>
-			<h4><?= $logged_in_profile['0']['email'] ?></h4>
+			<h4><?= $selected_profile['0']['email'] ?></h4>
 		</div>
 		<div class="modal-body">
 		<?php 
@@ -26,25 +38,25 @@
 			$name_attributes = array(
 				'name' => 'editname',
 				'id' => 'editname',
-				'value' => htmlspecialchars_decode($logged_in_profile['0']['name'])
+				'value' => htmlspecialchars_decode($selected_profile['0']['name'])
 			);
 			
 			$title_attributes = array(
 				'name' => 'edittitle',
 				'id' => 'edittitle',
-				'value' => htmlspecialchars_decode($logged_in_profile['0']['title'])
+				'value' => htmlspecialchars_decode($selected_profile['0']['title'])
 			);
 			
 			$tel_attributes = array(
 				'name' => 'edittel',
 				'id' => 'edittel',
-				'value' => htmlspecialchars_decode($logged_in_profile['0']['tel'])
+				'value' => htmlspecialchars_decode($selected_profile['0']['tel'])
 			);
 			
 			$url_attributes = array(
 				'name' => 'editurl',
 				'id' => 'editurl',
-				'value' => htmlspecialchars_decode($logged_in_profile['0']['url'])
+				'value' => htmlspecialchars_decode($selected_profile['0']['url'])
 			);
 			
 			$upload_attributes = array(
@@ -58,14 +70,14 @@
 				'rows' => '4',
 				'class' => 'span4',
 				'placeholder' => 'Type a short description about yourself here...',
-				'value' => htmlspecialchars_decode($logged_in_profile['0']['bio'])
+				'value' => htmlspecialchars_decode($selected_profile['0']['bio'])
 			);
 			
 			$addtags_attributes = array(
 				'name' => 'addtags',
 				'id' => 'addtags',
-				'class' => 'input-xlarge',
-				'placeholder' => 'Add tags separated by commas...',
+				'class' => 'span4',
+				'placeholder' => 'Add tags without spaces and separated by commas...',
 				'value' => ''
 			);
 			
@@ -75,8 +87,8 @@
 				'id' => 'profile-edit-submit',
 			);
 		?>
-			<img src="<?php if (isset($logged_in_profile['0']['profilepic'])){
-								echo base_url($logged_in_profile['0']['profilepic']);
+			<img src="<?php if (isset($selected_profile['0']['profilepic'])){
+								echo base_url($selected_profile['0']['profilepic']);
 							}
 							else{
 								echo base_url('assets/profilepics/default.jpg');
@@ -139,6 +151,15 @@
 		<div class="modal-footer">
 			<a href="#" class="btn" data-dismiss="modal">Close</a>
 			<?php echo form_submit($save_attributes, 'Save Changes'); ?>
+			<?php
+			if($logged_in_profile['0']['id'] == 1)
+			{
+				echo form_submit(array('class' => 'btn btn-danger',
+				'name' => 'delete_profile',
+				'id' => 'delete_profile',
+				'data-id' => $selected_profile['0']['id']), 'Delete');
+			}
+			?>
 		</div>
 	
 </div>

@@ -136,7 +136,22 @@
 			//	});
 			//	return false;
 			//});
-			
+			<?php if($logged_in_profile['0']['id'] == 1) { ?>
+				$('[data-toggle="modal"]').click(function(){
+					var id = $(this).data('id');
+					
+					$.ajax({
+						type:	'post',
+						url:	'<?= base_url("index.php/freeter/open_edit_profile") ?>',
+						data: {'id': id},
+						success: function(result)
+						{
+							$('#content-box').html(result);
+						}
+					});
+				
+				});
+			<?php } else { ?>
 			// ajax request for profile box on click
 			$('[data-toggle="modal"]').click(function(){
 				var id = $(this).data('id');
@@ -150,6 +165,26 @@
 					}
 					
 				});
+			});
+			<?php }?>
+			
+			$('#content-box').on('click', '#delete_profile', function(){
+				var id = $(this).data('id');
+				
+				if(confirm("Are you sure you want to delete this profile and account?")) {
+					$.ajax({
+					type:	'post',
+					url:	'<?= base_url("index.php/admin/delete_profile") ?>',
+					data: {'id': id},
+					success: function(result)
+					{
+						$('#content-box').html(result);
+					}
+					
+				});
+				}
+				return false;
+			
 			});
 			
 			//allow name link to open the edit profile form view through the controller
