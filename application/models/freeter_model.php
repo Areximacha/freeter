@@ -167,11 +167,14 @@
 		{
 			foreach ($new_tags as $new_tag)
 			{
-				$this->db->where('tag', $new_tag);
-				$query = $this->db->get('tags');
-				if ($query->num_rows() == 0)
+				if($new_tag)
 				{
-					$this->db->insert('tags', array('tag' => $new_tag));
+					$this->db->where('tag', $new_tag);
+					$query = $this->db->get('tags');
+					if ($query->num_rows() == 0)
+					{
+						$this->db->insert('tags', array('tag' => $new_tag));
+					}
 				}
 				
 			}
@@ -181,7 +184,10 @@
 		{
 			foreach ($tags as $tag_id)
 				{
-					$this->db->insert('users_tags', array('user_id' => $id, 'tag_id' => $tag_id));
+					if($tag_id !== NULL)
+					{
+						$this->db->insert('users_tags', array('user_id' => $id, 'tag_id' => $tag_id));
+					}
 				}
 		}
 	

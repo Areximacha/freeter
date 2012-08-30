@@ -97,7 +97,6 @@
 			});
 			
 			//ajax for the registration form
-			// .live() so that the event handler stays even when content is changed dynamically
 			$('#content-box').on('click', '#registration-form-submit', function(){
 				var form_data = {
 					name : $('#name').val(),
