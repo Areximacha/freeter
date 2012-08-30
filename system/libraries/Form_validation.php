@@ -1071,7 +1071,30 @@ class CI_Form_validation {
 
 		return TRUE;
 	}
-
+	
+	// --------------------------------------------------------------------
+    
+    /**
+     * Validate URL
+     *
+     * @access    public
+     * @param    string
+     * @return    string
+     */
+    public function valid_url($url)
+    {
+        $pattern = "/^(http(s?)\:\/\/)?(([\w\-]+\.)+([\w]{2,5}))(:[\d]{1,5})?/";
+        if (!preg_match($pattern, $url))
+        {
+            return FALSE;
+        }
+		
+		error_log('penarse');
+		
+        return TRUE;
+		
+    }
+	
 	// --------------------------------------------------------------------
 
 	/**

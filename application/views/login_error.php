@@ -6,7 +6,7 @@
 		</div>
 		<div class="modal-body">
 			<div class="alert alert-error">
-				<p>An error occured whilst updating your profile. Please try again.</p>
+				<p>An error occured whilst logging into your profile. Please try again.</p>
 				<p><?= validation_errors() ?></p>
 			</div>
 		</div>

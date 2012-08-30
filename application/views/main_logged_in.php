@@ -11,7 +11,14 @@
 			
 			<div id="top-right">
 				<div id="nav-profile" class="pull-right">
-					<a id="edit_profile_link" href="#content-box" data-toggle="modal" class="navbar-link"><strong><?= $logged_in_profile['0']['name']?></strong></a>
+					<a id="edit_profile_link" href="#content-box" data-toggle="modal" class="navbar-link"><strong><?php if(strlen($logged_in_profile['0']['name']) > 23)
+																														{
+																															echo substr($logged_in_profile['0']['name'], 0, 20).'...';
+																														}
+																														else
+																														{
+																															echo $logged_in_profile['0']['name'];
+																														}?></strong></a>
 					<img src="<?php if (isset($logged_in_profile['0']['profilepic'])){
 							echo base_url($logged_in_profile['0']['profilepic']);
 						}

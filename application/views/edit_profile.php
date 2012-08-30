@@ -26,25 +26,25 @@
 			$name_attributes = array(
 				'name' => 'editname',
 				'id' => 'editname',
-				'value' => $logged_in_profile['0']['name']
+				'value' => htmlspecialchars_decode($logged_in_profile['0']['name'])
 			);
 			
 			$title_attributes = array(
 				'name' => 'edittitle',
 				'id' => 'edittitle',
-				'value' => $logged_in_profile['0']['title']
+				'value' => htmlspecialchars_decode($logged_in_profile['0']['title'])
 			);
 			
 			$tel_attributes = array(
 				'name' => 'edittel',
 				'id' => 'edittel',
-				'value' => $logged_in_profile['0']['tel']
+				'value' => htmlspecialchars_decode($logged_in_profile['0']['tel'])
 			);
 			
 			$url_attributes = array(
 				'name' => 'editurl',
 				'id' => 'editurl',
-				'value' => $logged_in_profile['0']['url']
+				'value' => htmlspecialchars_decode($logged_in_profile['0']['url'])
 			);
 			
 			$upload_attributes = array(
@@ -58,7 +58,7 @@
 				'rows' => '4',
 				'class' => 'span4',
 				'placeholder' => 'Type a short description about yourself here...',
-				'value' => $logged_in_profile['0']['bio']
+				'value' => htmlspecialchars_decode($logged_in_profile['0']['bio'])
 			);
 			
 			$addtags_attributes = array(

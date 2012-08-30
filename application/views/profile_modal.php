@@ -14,7 +14,7 @@
 		?>" />
 		<p>Email: <a href="mailto:<?= $profile['0']['email'] ?>"><?= $profile['0']['email'] ?></a></p>
 		<p>TEL: <?= $profile['0']['tel'] ?></p>
-		<p>Homepage: <a href="#"><?= $profile['0']['url'] ?></a></p>
+		<p>Homepage: <a href="<?= $profile['0']['url'] ?>"><?= $profile['0']['url'] ?></a></p>
 		<p>Bio: <?= $profile['0']['bio'] ?></p>
 		<p>Tags: <?php 
 					$list_of_tags_for_user = array();

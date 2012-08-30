@@ -43,8 +43,8 @@ class Freeter extends CI_Controller{
 
 	public function register()
 	{
-		$this->form_validation->set_rules('name', 'Name', 'trim|required|xss_clean');
-		$this->form_validation->set_rules('email', 'Email address', 'strtolower|trim|required|valid_email|is_unique[users.email]|xss_clean');
+		$this->form_validation->set_rules('name', 'Name', 'trim|required|xss_clean|htmlspecialchars');
+		$this->form_validation->set_rules('email', 'Email address', 'strtolower|trim|required|valid_email|is_unique[users.email]|xss_clean|htmlspecialchars');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required|matches[password_confirm]|sha1');
 		$this->form_validation->set_rules('password_confirm', 'Password Confirmation', 'trim|required');
 
@@ -88,41 +88,34 @@ class Freeter extends CI_Controller{
 
 	public function edit_profile()
 	{
-		$this->form_validation->set_rules('editname', 'Name', 'trim|required|xss_clean');
+		
+		$this->form_validation->set_rules('editname', 'Name', 'trim|required|xss_clean|htmlspecialchars');
 
 		if($this->input->post('edittitle')):
-			$this->form_validation->set_rules('edittitle', 'Title', 'trim|xss_clean');
+			$this->form_validation->set_rules('edittitle', 'Title', 'trim|xss_clean|htmlspecialchars');
 		endif;
 
 		if($this->input->post('edittel')):
-			$this->form_validation->set_rules('edittel', 'Tel', 'trim|xxs_clean');
+			$this->form_validation->set_rules('edittel', 'Tel', 'trim|xxs_clean|htmlspecialchars');
 		endif;
 
 		if($this->input->post('editurl')):
-			$this->form_validation->set_rules('editurl', 'URL', 'trim|xxs_clean');
+			$this->form_validation->set_rules('editurl', 'URL', 'trim|prep_url|valid_url|xxs_clean|htmlspecialchars');
 		endif;
 
 		if($this->input->post('editbio')):
-			$this->form_validation->set_rules('editbio', 'Bio', 'trim|xxs_clean');
+			$this->form_validation->set_rules('editbio', 'Bio', 'trim|xxs_clean|htmlspecialchars');
 		endif;
 
 		if($this->input->post('addtags')):
-			$this->form_validation->set_rules('addtags', 'New tags', 'strtolower|trim|xxs_clean');
+			$this->form_validation->set_rules('addtags', 'New tags', 'strtolower|alpha_dash|trim|xxs_clean|htmlspecialchars');
 		endif;
 
 		if($this->input->post('tags')):
 			$this->form_validation->set_rules('tags', 'Tags', 'xxs_clean');
 		endif;
 
-		if ($this->form_validation->run() == FALSE)
-		{
-			$this->load->view('templates/header');
-			$this->load->view('error_view');
-			$this->load->view('templates/footer');
-		}
-		else
-		{
-			$id = $this->session->userdata['user_data']['id'];
+		$id = $this->session->userdata['user_data']['id'];
 
 			// upload profile pic if submitted
 			if (!empty($_FILES['profilepic']) && $_FILES['profilepic']['size'] > 0)
@@ -143,13 +136,32 @@ class Freeter extends CI_Controller{
 				$this->load->library('upload', $config);
 
 				$profilepic = 'profilepic';
-				$this->upload->do_upload($profilepic);
+				
+				if ($this->upload->do_upload($profilepic))
+				{
+					$edit_profilepic = 'assets/profilepics/'.$file;
 
-				$edit_profilepic = 'assets/profilepics/'.$file;
-
-				$this->freeter_model->update_profilepic($id, $edit_profilepic);
+					$this->freeter_model->update_profilepic($id, $edit_profilepic);
+				}
+				else
+				{
+					$profilepic_fail = TRUE;
+				}
 
 			}
+		
+		
+		if ($this->form_validation->run() == FALSE OR $profilepic_fail == TRUE)
+		{
+			$this->load->view('templates/header');
+			$this->load->view('error_view');
+			$this->load->view('templates/footer');
+		}
+		else
+		{
+			
+
+			
 
 			$edit_name = $this->input->post('editname');
 			$edit_title = $this->input->post('edittitle');
@@ -187,7 +199,9 @@ class Freeter extends CI_Controller{
 
 		if($this->form_validation->run() == FALSE)
 		{
-			$this->load->view('templates/login_form');
+			$this->load->view('templates/header');
+			$this->load->view('login_error');
+			$this->load->view('templates/footer');
 		}
 		else
 		{
