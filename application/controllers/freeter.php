@@ -73,7 +73,7 @@ class Freeter extends CI_Controller{
 
 			$session_id = $this->session->userdata['user_data']['id'];
 
-			$data['logged_in_profile'] = $this->freeter_model->select_profile($session_id);
+			$data['selected_profile'] = $this->freeter_model->select_profile($session_id);
 			$data['tags'] = $this->freeter_model->get_tags();
 
 			$this->load->view('edit_profile', $data);

@@ -5,7 +5,7 @@
 		'id' => 'edit_profile'
 	);
 	
-	if($logged_in_profile['0']['id'] == 1)
+	if(isset($logged_in_profile) && $logged_in_profile['0']['id'] == 1)
 	{
 		$hidden = array(
 			'id' => $selected_profile['0']['id']
@@ -120,7 +120,7 @@
 					<label class="checkbox inline">
 						<?php 
 							$istagged = false;
-							foreach ($logged_in_profile['tags'] as $row)
+							foreach ($selected_profile['tags'] as $row)
 							{
 								if ($row['tag'] == $tag_item['tag'])
 								{
@@ -152,7 +152,7 @@
 			<a href="#" class="btn" data-dismiss="modal">Close</a>
 			<?php echo form_submit($save_attributes, 'Save Changes'); ?>
 			<?php
-			if($logged_in_profile['0']['id'] == 1)
+			if(isset($logged_in_profile) && $logged_in_profile['0']['id'] == 1)
 			{
 				echo form_submit(array('class' => 'btn btn-danger',
 				'name' => 'delete_profile',

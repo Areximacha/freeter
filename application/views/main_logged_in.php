@@ -6,7 +6,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#"><img src="<?= base_url('assets/img/logo2.png" alt="Freeter') ?>" /></a>
+          <a class="brand" href="<?= base_url() ?>"><img src="<?= base_url('assets/img/logo2.png" alt="Freeter') ?>" /></a>
           <div class="nav-collapse">
 			
 			<div id="top-right">

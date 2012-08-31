@@ -178,10 +178,10 @@
 					data: {'id': id},
 					success: function(result)
 					{
-						$('#content-box').html(result);
+						location.reload();
 					}
 					
-				});
+					});
 				}
 				return false;
 			
