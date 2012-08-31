@@ -136,8 +136,8 @@
 			//	});
 			//	return false;
 			//});
-			<?php if($logged_in_profile['0']['id'] == 1) { ?>
-				$('[data-toggle="modal"]').click(function(){
+			<?php if(isset($logged_in_profile) && $logged_in_profile['0']['id'] == 1) { ?>
+				$('.profile').click(function(){
 					var id = $(this).data('id');
 					
 					$.ajax({
@@ -153,7 +153,7 @@
 				});
 			<?php } else { ?>
 			// ajax request for profile box on click
-			$('[data-toggle="modal"]').click(function(){
+			$('.profile').click(function(){
 				var id = $(this).data('id');
 					
 				$.ajax({

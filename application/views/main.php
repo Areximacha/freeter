@@ -6,7 +6,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#"><img src="<?= base_url('assets/img/logo2.png" alt="Freeter') ?>" /></a>
+          <a class="brand" href="<?= base_url() ?>"><img src="<?= base_url('assets/img/logo2.png" alt="Freeter') ?>" /></a>
           <div class="nav-collapse">
 			
 			<div id="top-right">
@@ -149,7 +149,7 @@
       <footer>
         <div class="container">
 			<p class="pull-left"><a id="reg_link" href="#content-box" data-toggle="modal">New to Freeter? <strong>Sign up</strong></a></p>
-			<p class="pull-right"><a href="about/">About</a> . <a href="mailto:areximacha@areximacha.com">Contact</a></p>
+			<p class="pull-right"><a href="<?= base_url() ?>">Home</a> . <a href="<?= base_url('index.php/about') ?>">About</a> . <a href="mailto:areximacha@areximacha.com">Contact</a></p>
 		</div>
       </footer>
 	  

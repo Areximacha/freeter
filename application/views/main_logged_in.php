@@ -131,7 +131,7 @@
 	
       <footer>
         <div class="container">
-			<p class="pull-right"><a href="about/">About</a> . <a href="mailto:areximacha@areximacha.com">Contact</a></p>
+			<p class="pull-right"><a href="<?= base_url() ?>">Home</a> . <a href="<?= base_url('index.php/about') ?>">About</a> . <a href="mailto:areximacha@areximacha.com">Contact</a></p>
 		</div>
       </footer>
 	  
