@@ -142,7 +142,7 @@ class Freeter extends CI_Controller{
 			$id = $this->session->userdata['user_data']['id'];
 		}
 			
-		$profilepic_fail = FALSE;
+		$data['profilepic_fail'] = FALSE;
 			
 			// upload profile pic if submitted
 			if (!empty($_FILES['profilepic']) && $_FILES['profilepic']['size'] > 0)
@@ -175,16 +175,16 @@ class Freeter extends CI_Controller{
 				}
 				else
 				{
-					$profilepic_fail = TRUE;
+					$data['profilepic_fail'] = TRUE;
 				}
 
 			}
 		
 		
-		if ($this->form_validation->run() == FALSE OR $profilepic_fail == TRUE)
+		if ($this->form_validation->run() == FALSE OR $data['profilepic_fail'] == TRUE)
 		{
 			$this->load->view('templates/header');
-			$this->load->view('error_view');
+			$this->load->view('error_view', $data);
 			$this->load->view('templates/footer');
 		}
 		else
