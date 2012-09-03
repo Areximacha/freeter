@@ -1153,6 +1153,20 @@ class CI_Form_validation {
 	}
 
 	// --------------------------------------------------------------------
+	
+	/**
+	 * Alpha-numeric with underscores and dashes and spaces
+	 *
+	 * @access	public
+	 * @param	string
+	 * @return	bool
+	 */
+	public function alpha_dash_space($str)
+    {
+        return ( ! preg_match("/^([\w\s,-]+)+$/i", $str)) ? FALSE : TRUE;
+    }  
+
+	// --------------------------------------------------------------------
 
 	/**
 	 * Numeric

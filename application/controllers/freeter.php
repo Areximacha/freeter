@@ -126,7 +126,7 @@ class Freeter extends CI_Controller{
 		endif;
 
 		if($this->input->post('addtags')):
-			$this->form_validation->set_rules('addtags', 'New tags', 'strtolower|alpha_dash|trim|xxs_clean|htmlspecialchars');
+			$this->form_validation->set_rules('addtags', 'New tags', 'strtolower|alpha_dash_space|trim|xxs_clean|htmlspecialchars');
 		endif;
 
 		if($this->input->post('tags')):
@@ -141,7 +141,9 @@ class Freeter extends CI_Controller{
 		{
 			$id = $this->session->userdata['user_data']['id'];
 		}
-
+			
+		$profilepic_fail = FALSE;
+			
 			// upload profile pic if submitted
 			if (!empty($_FILES['profilepic']) && $_FILES['profilepic']['size'] > 0)
 			{
@@ -162,11 +164,14 @@ class Freeter extends CI_Controller{
 
 				$profilepic = 'profilepic';
 				
+				
+				
 				if ($this->upload->do_upload($profilepic))
 				{
 					$edit_profilepic = 'assets/profilepics/'.$file;
 
 					$this->freeter_model->update_profilepic($id, $edit_profilepic);
+					
 				}
 				else
 				{

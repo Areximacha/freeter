@@ -105,7 +105,9 @@
 						$format_tag = str_replace(" ", "_", $profile_tags['tag']);
 						echo $format_tag." ";
 					}?>" data-toggle="modal" href="#content-box">
-          <img src="<?= base_url($profile_item['profilepic']) ?>" />
+          <?php if($profile_item['profilepic']){ ?>
+			<img src="<?= base_url($profile_item['profilepic']) ?>" />
+		  <?php } ?>
 		  <div class="details">
 			<h2><?= $profile_item['name'] ?></h2>
 			<h4><?= $profile_item['title'] ?></h4>
