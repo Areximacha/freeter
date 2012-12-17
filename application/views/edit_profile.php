@@ -77,7 +77,7 @@
 				'name' => 'addtags',
 				'id' => 'addtags',
 				'class' => 'span4',
-				'placeholder' => 'Add tags without spaces and separated by commas...',
+				'placeholder' => 'Add tags separated by commas...',
 				'value' => ''
 			);
 			

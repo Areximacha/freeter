@@ -57,6 +57,8 @@
 								<?php echo form_submit($login_submit_attributes, 'Sign In'); ?>
 								
 								<p><?= validation_errors() ?></p>
+								
+								<?php echo form_close(); ?>
 							
 						</div>
 					</li>

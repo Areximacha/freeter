@@ -41,6 +41,7 @@
 						
 						echo form_open(base_url('index.php/freeter/logout'), $form_attributes);
 						echo form_submit($logout_attributes, 'Logout');
+						echo form_close();
 					?>
 					
 				</div>
